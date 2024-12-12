@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLHDBQE7F4"></script>
+ <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'G-VLHDBQE7F4');
+ </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/growsphere-1.png" />
+ <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/growsphere-2.png" />
+ <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/growsphere-3.png" />
+ <meta name="description" content="Maximize Your Earnings with a Trusted Platform Designed for Success" />	
+</head>
+<body>
+  <div class="container">
+    <div class="profile-card">
+      <h2>👤 User Profile</h2>
+      <div class="profile-info">
+        <div>
+          <strong>First Name:</strong> <span><%= user.first_name %></span>
+        </div>
+        <div>
+          <strong>Last Name:</strong> <span><%= user.last_name %></span>
+        </div>
+        <div>
+          <strong>Username:</strong> <span><%= user.username %></span>
+        </div>
+        <div>
+          <strong>Email:</strong> <span><%= user.email %></span>
+        </div>
+        <div>
+          <strong>Phone Number:</strong> <span><%= user.phone_number %></span>
+        </div>
+        <div>
+          <strong>Country:</strong> <span><%= user.country %></span>
+        </div>
+        <div>
+          <strong>Active Package:</strong> <span><%= user.active_package %></span>
+        </div>
+        <div>
+          <strong>Coupon Code:</strong> <span><%= user.coupon_code %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #f3c623, #d1a54f, #ffd700); /* HD Gold Gradient */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card {
+  text-align: center;
+}
+
+.profile-card h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.profile-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.profile-info div {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.profile-info strong {
+  display: block;
+  color: #555;
+}
+
+button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #45a049;
+}
+
+  </style>
+</body>
+</html>
