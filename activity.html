@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLHDBQE7F4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VLHDBQE7F4');
+    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activities</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/growsphere-1.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/growsphere-2.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/growsphere-3.png" />
+<meta name="description" content="Maximize Your Earnings with a Trusted Platform Designed for Success" />	
+  <style>
+.activity-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.activity-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#activity-list {
+  list-style: none;
+  padding: 0;
+}
+
+#activity-list li {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+#activity-list li .icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+#activity-list li .description {
+  flex-grow: 1;
+}
+
+#activity-list li .timestamp {
+  font-size: 12px;
+  color: #888;
+}
+
+  </style>
+</head>
+<body>
+  <div class="activity-container">
+    <h2>📊 Activity Log</h2>
+    <ul id="activity-list">
+      <li>Loading activities...</li>
+    </ul>
+  </div>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const activityList = document.getElementById("activity-list");
+
+  // Fetch activities
+  fetch("/activity")
+    .then((response) => response.json())
+    .then((activities) => {
+      activityList.innerHTML = ""; // Clear the "loading" message
+
+      if (activities.length === 0) {
+        activityList.innerHTML = "<li>No activities found.</li>";
+        return;
+      }
+
+      activities.forEach ((activity) => {
+        const listItem = document.createElement("li");
+        const icon = document.createElement("span");
+        const description = document.createElement("div");
+        const timestamp = document.createElement("div");
+
+        // Add classes
+        icon.classList.add("icon");
+        description.classList.add("description");
+        timestamp.classList.add("timestamp");
+
+        // Determine icon and styling
+        switch (activity.activity_type) {
+          case "Referral":
+            icon.textContent = "👥";
+            break;
+          case "Withdrawal":
+            icon.textContent = "💸";
+            break;
+          case "Task Completion":
+            icon.textContent = "💼";
+            break;
+          default:
+            icon.textContent = "🔔";
+        }
+
+        // Populate content
+        description.innerHTML = `<strong>${activity.activity_type}:</strong> ${activity.activity_description}`;
+        if (activity.related_username) {
+          description.innerHTML += ` (Referred: <strong>${activity.related_username}</strong>)`;
+        }
+        timestamp.textContent = new Date(activity.created_at).toLocaleString();
+
+        // Append to list item
+        listItem.appendChild(icon);
+        listItem.appendChild(description);
+        listItem.appendChild(timestamp);
+
+        // Add to list
+        activityList.appendChild(listItem);
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching activities:", error);
+      activityList.innerHTML = "<li>Error loading activities. Please try again later.</li>";
+    });
+});
+
+  </script>
+</body>
+</html>
+
+  
