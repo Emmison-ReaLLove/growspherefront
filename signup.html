@@ -66,130 +66,81 @@
     <div class="form-wrapper">
         <form class="form-container" method="POST" action="/signup">
             <div class="step-1">
-                <h2>Profile information</h2>
-                <a class="meta" href="/signin">
-                    <span>Already have an account? </span>
-                    <span>sign in</span>
-                </a>
-                <ul class="progress">
-                    <li></li>
-                    <span></span>
-                    <li></li>
-                </ul>
-                <div class="input-sec">
-                    <label for="#">First name</label>
-                    <input name="first_name" type="text" placeholder="Enter first name" />
-                </div>
-                <div class="input-sec">
-                    <label for="#">Last name</label>
-                    <input name="last_name" type="text" placeholder="Enter last name" />
-                </div>
-
-                <div class="input-sec">
-                    <label for="#">Username</label>
-                    <input name="username" type="text" placeholder="Enter your Username" />
-                </div>
-
-                <div class="input-sec">
-                    <label for="#">Email address</label>
-                    <input name="user_email" type="email" placeholder="Enter email address" id="email" />
-                </div>
-
-                <div class="input-sec">
-                    <label for="#">Phone number</label>
-                    <input name="user_phone" type="text" placeholder="Phone number" />
-                </div>
-
-                <div class="actions">
-                    <button>Continue</button>
-                </div>
-                
-                
+              <h2>Profile Information</h2>
+              <a class="meta" href="/signin">
+                <span>Already have an account?</span>
+                <span>Sign in</span>
+              </a>
+              <ul class="progress">
+                <li></li>
+                <span></span>
+                <li></li>
+              </ul>
+              <div class="input-sec">
+                <label for="#">First name</label>
+                <input name="first_name" type="text" placeholder="Enter first name" required />
+              </div>
+              <div class="input-sec">
+                <label for="#">Last name</label>
+                <input name="last_name" type="text" placeholder="Enter last name" required />
+              </div>
+              <div class="input-sec">
+                <label for="#">Username</label>
+                <input name="username" type="text" placeholder="Enter your Username" required />
+              </div>
+              <div class="input-sec">
+                <label for="#">Email address</label>
+                <input name="user_email" type="email" placeholder="Enter email address" id="email" required />
+              </div>
+              <div class="input-sec">
+                <label for="#">Phone number</label>
+                <input name="user_phone" type="text" placeholder="Phone number" required />
+              </div>
+              <div class="actions">
+                <button type="button" class="next-step">Continue</button>
+              </div>
             </div>
             <div class="step-2">
-                <h2>Complete Registration</h2>
-                <a class="meta" href="/signin">
-                    <span>Already have an account? </span>
-                    <span>sign in</span>
-                </a>
-                <ul class="progress">
-                    <li></li>
-                    <span></span>
-                    <li></li>
-                </ul>
-
-                <div class="input-sec">
-                    <label for="countryInput">Country</label>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                      <input 
-                        type="text" 
-                        id="countryInput" 
-                        name="country" 
-                        placeholder="Type your country" 
-                      />
-                    </div>
-                  </div>
-                  <style>
-                    .input-sec {
-                      margin-bottom: 20px;
-                    }
-                  
-                    .input-sec label {
-                      display: block;
-                      font-size: 16px;
-                      margin-bottom: 5px;
-                      font-weight: bold;
-                    }
-                  
-                    .input-sec input {
-                      padding: 10px;
-                      font-size: 16px;
-                      border: 1px solid #ccc;
-                      border-radius: 4px;
-                      width: 250px;
-                    }
-                    small {
-                      font-size: 12px;
-                    }
-                  </style>
-                  
-                <div class="input-sec">
-                    <label for="#">Password</label>
-                    <input name="user_password" type="password" placeholder="Password" />
-                </div>
-                <div class="input-sec">
-                    <label for="#">Confirm password</label>
-                    <input name="confirm_password" type="password" placeholder="Confirm password" />
-                </div>
-
-                <div class="input-sec">
-                    <label for="#">Coupon code</label>
-                    <input type="text" name="coupon" placeholder="Coupon code" />
-                </div>
-
-                <div class="input-sec">
-                    <select name="active_package" id="">
-                        <option value="none">Select package</option>
-                        <option value="anchor-lite">Silver</option>
-                        <option value="anchor-pro">Gold</option>
-                    </select>
-                </div>
-
-                
-                <input type="hidden" name="nocsrf" value="c85c1d5f878b951857dd1c80523044312ca4cd5bed4a0efa0aab4b6500f012e8b133bbf7eefcf9848ed071aaf2d629b0f15847a389ce08cd11fa4543d77f1494">
-
-                <div class="terms">
-                    <input name="terms" type="checkbox">
-                    <a href="/terms-of-service" target="__blank">I Agree to The Terms and Conditions </a>
-                </div>
-
-                <div class="actions">
-                    <button class="show-step-1">back</button>
-                    <button class="signup-btn">Sign up</button>
-                </div>
-                
+              <h2>Complete Registration</h2>
+              <ul class="progress">
+                <li></li>
+                <span></span>
+                <li></li>
+              </ul>
+              <div class="input-sec">
+                <label for="countryInput">Country</label>
+                <input type="text" id="countryInput" name="country" placeholder="Type your country" required />
+              </div>
+              <div class="input-sec">
+                <label for="#">Password</label>
+                <input name="user_password" type="password" placeholder="Password" required />
+              </div>
+              <div class="input-sec">
+                <label for="#">Confirm Password</label>
+                <input name="confirm_password" type="password" placeholder="Confirm password" required />
+              </div>
+              <div class="input-sec">
+                <label for="#">Coupon code</label>
+                <input type="text" name="coupon" placeholder="Coupon code" required />
+              </div>
+              <div class="input-sec">
+                <label for="#">Select package</label>
+                <select name="active_package" required>
+                  <option value="" disabled selected>Select package</option>
+                  <option value="anchor-lite">Silver</option>
+                  <option value="anchor-pro">Gold</option>
+                </select>
+              </div>
+              <div class="terms">
+                <input name="terms" type="checkbox" required />
+                <a href="/terms-of-service" target="__blank">I Agree to the Terms and Conditions</a>
+              </div>
+              <div class="actions">
+                <button type="button" class="prev-step">Back</button>
+                <button class="signup-btn" type="submit">Sign up</button>
+              </div>
             </div>
-        </form>
+          </form>         
         <p>
             Don't have a coupon code? 
             <a href="" id="getCouponLink" action=""> Get Coupon Code Here</a>
@@ -298,64 +249,94 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector('.form-container');
-const submit_btn = document.querySelector('.form-container .signup-btn');
+  const form = document.querySelector(".form-container");
+  const submit_btn = document.querySelector(".form-container .signup-btn");
 
-form.addEventListener('submit', async (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const BASE_URL = "https://growsphereback.onrender.com";
-    const couponInput = document.querySelector('input[name="coupon"]');
-    const couponCode = couponInput.value.trim();
+    submit_btn.disabled = true;
 
-    // Check if coupon is entered
-    if (!couponCode) {
-        showTemporaryMessage("Please enter a coupon code.","warning");
-        return;
-    }
+    const BASE_URL = "https://growsphereback.onrender.com";
+    const formData = new FormData(form);
 
     try {
-        submit_btn.classList.add("btn-loader");
+      // Validate coupon code
+      const couponCode = formData.get("coupon").trim();
+      if (!couponCode) {
+        showTemporaryMessage("Please enter a coupon code.", "warning");
+        return;
+      }
 
-        // Validate coupon code
-        const couponValidation = await fetch(`${BASE_URL}/validate-coupon`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ coupon: couponCode }),
-        });
+      const couponValidation = await fetch(`${BASE_URL}/validate-coupon`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ coupon: couponCode }),
+      });
 
-        const couponResult = await couponValidation.json();
+      const couponResult = await couponValidation.json();
+      if (!couponValidation.ok || !couponResult.success) {
+        throw new Error(couponResult.message || "Invalid coupon code.");
+      }
 
-        if (!couponValidation.ok || !couponResult.success) {
-            throw new Error(couponResult.message || "Invalid coupon code. Please try again.");
-        }
+      showTemporaryMessage("Coupon code is valid. Proceeding with signup...", "success");
 
-        showTemporaryMessage("Coupon code is valid. You can proceed with signup.","success");
+      // Send signup data
+      const signupResponse = await fetch(`${BASE_URL}/signup`, {
+        method: "POST",
+        body: formData,
+      });
 
-        // Send signup data
-        const formData = new FormData(form);
-        const signupResponse = await fetch(`${BASE_URL}/signup`, {
-            method: 'POST',
-            body: formData,
-        });
+      const signupResult = await signupResponse.json();
+      if (!signupResponse.ok) {
+        throw new Error(signupResult.message || "Signup failed.");
+      }
 
-        const signupResult = await signupResponse.json();
-
-        if (!signupResponse.ok) {
-            throw new Error(signupResult.message || "Signup failed. Please try again.");
-        }
-
-        showTemporaryMessage("Signup successful!","success");
-        window.location.href = "/signin";
+      showTemporaryMessage("Signup successful!", "success");
+      window.location.href = "/signin";
     } catch (error) {
-        console.error("Error during signup:", error);
-        showTemporaryMessage("An error occurred during signup. Please try again.","warning");
+      console.error("Error during signup:", error);
+      showTemporaryMessage(error.message || "An error occurred during signup.", "warning");
     } finally {
-        submit_btn.classList.remove("btn-loader");
+      submit_btn.disabled = false;
     }
-});})
-function showTemporaryMessage(message, type) { let messageContainer = document.getElementById("message-container");if (!messageContainer) {messageContainer = document.createElement("div");messageContainer.id = "message-container"; messageContainer.style.position = "fixed"; messageContainer.style.top = "10px"; messageContainer.style.right = "10px"; messageContainer.style.zIndex = "1000";document.body.appendChild(messageContainer);}const messageElement = document.createElement("div");messageElement.textContent = message;messageElement.style.padding = "10px 20px";messageElement.style.margin = "5px";messageElement.style.borderRadius = "5px";messageElement.style.color = "white";messageElement.style.fontWeight = "bold";messageElement.style.opacity = "1";messageElement.style.transition = "opacity 0.5s ease"; if (type === "success") { messageElement.style.backgroundColor = "#4caf50"; } else if (type === "warning") { messageElement.style.backgroundColor = "#f44336";   } messageContainer.appendChild(messageElement);setTimeout(() => { messageElement.style.opacity = "0"; setTimeout(() => {    messageContainer.removeChild(messageElement); }, 500);}, 4000);}
+  });
+});
+
+function showTemporaryMessage(message, type) {
+  let messageContainer = document.getElementById("message-container");
+  if (!messageContainer) {
+    messageContainer = document.createElement("div");
+    messageContainer.id = "message-container";
+    messageContainer.style.position = "fixed";
+    messageContainer.style.top = "10px";
+    messageContainer.style.right = "10px";
+    messageContainer.style.zIndex = "1000";
+    document.body.appendChild(messageContainer);
+  }
+  const messageElement = document.createElement("div");
+  messageElement.textContent = message;
+  messageElement.style.padding = "10px 20px";
+  messageElement.style.margin = "5px";
+  messageElement.style.borderRadius = "5px";
+  messageElement.style.color = "white";
+  messageElement.style.fontWeight = "bold";
+  messageElement.style.opacity = "1";
+  messageElement.style.transition = "opacity 0.5s ease";
+  if (type === "success") {
+    messageElement.style.backgroundColor = "#4caf50";
+  } else {
+    messageElement.style.backgroundColor = "#f44336";
+  }
+  messageContainer.appendChild(messageElement);
+  setTimeout(() => {
+    messageElement.style.opacity = "0";
+    setTimeout(() => {
+      messageContainer.removeChild(messageElement);
+    }, 500);
+  }, 4000);
+}
 </script>
 
 <script>
