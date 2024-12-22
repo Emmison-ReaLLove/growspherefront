@@ -457,13 +457,12 @@
   </script>
 
 <script>
-    const BASE_URL = "https://growsphereback.onrender.com";
     const form = document.querySelector('.form-container');
 const submit_btn = document.querySelector('.form-container .signup-btn');
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
+    const BASE_URL = "https://growsphereback.onrender.com";
     const couponInput = document.querySelector('input[name="coupon"]');
     const couponCode = couponInput.value.trim();
 
