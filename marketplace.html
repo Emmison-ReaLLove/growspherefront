@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLHDBQE7F4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VLHDBQE7F4');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowSphere Marketplace</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/growsphere-1.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/growsphere-2.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/growsphere-3.png" />
+<meta name="description" content="Maximize Your Earnings with a Trusted Platform Designed for Success" />
+<script>
+    const useFetch = async ({customeUrl = "", path, method, data, headers = null, contentType = "application/json", responseType = "application/json",}) => {
+        try {
+            const payload = {
+                method: method,
+                redirect: 'manual',
+                headers: headers ? headers : {
+                    'Accept': 'application/json',
+                },
+                body: contentType == "application/json" ? JSON.stringify(data) : data,
+            }
+
+            if (contentType == "application/json") {
+                payload.headers['Content-Type'] = "application/json"
+            }
+
+            const response = await fetch(customeUrl ? customeUrl : `growsphere.ip-ddns.com${path}`, payload)
+
+            if (response.status == 401) {
+                window.location.replace("https://growsphere.ip-ddns.com/signin");
+                return;
+            }
+
+            const res = await response.json();
+            res.status_code = response.status
+            return res;
+        } catch (err) {
+            throw err
+        }
+    }
+
+    const loadSystemTheme = () => {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add("dark-theme")
+            if (document.body.classList.contains("light-theme")) {
+                document.body.classList.remove("light-theme")
+            }
+        } else {
+            document.body.classList.add("light-theme")
+            if (document.body.classList.contains("dark-theme")) {
+                document.body.classList.remove("dark-theme")
+            }
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            const newColorScheme = event.matches ? "dark" : "light";
+
+            if (newColorScheme == "light") {
+                document.body.classList.add("light-theme")
+
+                if (document.body.classList.contains("dark-theme")) {
+                    document.body.classList.remove("dark-theme")
+                }
+            }
+
+            if (newColorScheme == "dark") {
+                document.body.classList.add("dark-theme")
+
+                if (document.body.classList.contains("light-theme")) {
+                    document.body.classList.remove("light-theme")
+                }
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+        const theme_mode = localStorage.getItem('theme_mode')
+		if (theme_mode == "light") {
+			document.body.classList.add("light-theme")
+		}
+
+		if (theme_mode == "dark") {
+			document.body.classList.add("dark-theme")
+		}
+
+        if (theme_mode == "system") {
+			loadSystemTheme()
+		}
+    });
+
+    class MessageClass {
+        success (message, cb = () => {} ) {
+            let wrapper
+            let content
+            if (document.querySelector('.lofty-message-wrapper')) {
+                wrapper = document.querySelector('.lofty-message-wrapper')
+                content = '<div class="lofty-message-box lofty-message-success"><i class="fa-regular fa-circle-check"></i><h2>Success</h2> <span>'+message+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                wrapper.innerHTML = content
+            } else {
+                const appWrapper = document.getElementById('root')
+                wrapper = document.createElement("div");
+                wrapper.classList.add("lofty-message-wrapper")
+                appWrapper.appendChild(wrapper)
+
+                content = '<div class="lofty-message-box lofty-message-success"><i class="fa-regular fa-circle-check"></i><h2>Success</h2> <span>'+message+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                wrapper.innerHTML = content
+            }
+
+            if (wrapper.classList.contains("lofty-message-wrapper-out")) {
+                wrapper.classList.remove("lofty-message-wrapper-out")
+            }
+
+            wrapper.style.display = "flex"
+
+            const close_btn = document.querySelector(".lofty-close-msg-btn")
+            close_btn.addEventListener('click', (e) => {
+                e.preventDefault()
+
+                wrapper.classList.add("lofty-message-wrapper-out")
+                setTimeout(() => {
+                    wrapper.style.display = "none"
+                    cb()
+                }, 250)
+            })
+        }
+
+        error (message, cb = () => {} ) {
+            let wrapper
+            let content
+            let displayMessage = "An error occurred";
+            displayMessage = message
+
+            if (document.querySelector('.lofty-message-wrapper')) {
+                wrapper = document.querySelector('.lofty-message-wrapper')
+                content = '<div class="lofty-message-box lofty-message-error"><i class="fa-regular fa-circle-xmark"></i><h2>Error</h2> <span>'+displayMessage+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                wrapper.innerHTML = content
+            } else {
+                const appWrapper = document.getElementById('root')
+                wrapper = document.createElement("div");
+                wrapper.classList.add("lofty-message-wrapper")
+                appWrapper.appendChild(wrapper)
+
+                content = '<div class="lofty-message-box lofty-message-error"><i class="fa-regular fa-circle-xmark"></i><h2>Error</h2><span>'+displayMessage+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                wrapper.innerHTML = content
+            }
+
+            if (wrapper.classList.contains("lofty-message-wrapper-out")) {
+                wrapper.classList.remove("lofty-message-wrapper-out")
+            }
+
+            wrapper.style.display = "flex"
+
+            const close_btn = document.querySelector(".lofty-close-msg-btn")
+            close_btn.addEventListener('click', (e) => {
+                e.preventDefault()
+
+                wrapper.classList.add("lofty-message-wrapper-out")
+
+                setTimeout(() => {
+                    wrapper.style.display = "none"
+                    cb()
+                }, 250)
+            })
+        }
+    }
+
+    const Message = new MessageClass()
+</script>		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet" />	
+    <style>
+    :root {
+    --primary-green: #2c9c5e; /* Main theme green */
+    --secondary-green: #28a745; /* Accent green */
+    --background-gray: #f8f9fa;
+    --text-dark: #343a40;
+    --text-light: #6c757d;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-gray);
+    color: var(--text-dark);
+}
+
+.about-us-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.video-section iframe {
+    border-radius: 8px;
+}
+
+.page-title {
+    text-align: center;
+    color: var(--primary-green);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    color: var(--secondary-green);
+    font-size: 1.8rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    line-height: 1.6;
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+ul {
+    padding-left: 1.5rem;
+    color: var(--text-dark);
+    margin: 1rem 0;
+}
+
+ul li {
+    margin-bottom: 0.5rem;
+}
+
+.cta {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: var(--primary-green);
+    color: var(--white);
+    border-radius: 8px;
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--secondary-green);
+    color: var(--white);
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #218838; /* Slightly darker green */
+}
+.courses-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.main-title {
+    text-align: center;
+    color: var(--primary-green);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.intro-text {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.courses-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.course-category {
+    background: var(--primary-green);
+    color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.course-category h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+}
+
+.course-category ul {
+    list-style: disc;
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.course-category ul li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .intro-text {
+        font-size: 0.9rem;
+    }
+}        
+
+h1, h3, h4 {
+    font-family: 'Poppins', sans-serif;
+    color: #2c3e50;
+}
+
+section.marketplace {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #27ae60;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+}
+
+/* Upload Section */
+.upload-section {
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.upload-section h2 {
+    margin-bottom: 15px;
+    color: #34495e;
+}
+
+.upload-section form {
+    display: grid;
+    gap: 15px;
+}
+
+.upload-section input, 
+.upload-section textarea, 
+.upload-section button {
+    font-size: 1rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.upload-section textarea {
+    height: 100px;
+    resize: none;
+}
+
+.upload-section input:focus, 
+.upload-section textarea:focus {
+    border-color: #27ae60;
+}
+
+.upload-section button {
+    background: #27ae60;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.upload-section button:hover {
+    background: #1e8449;
+}
+
+/* Items Section */
+#items-section {
+    margin-top: 30px;
+}
+
+#items-section h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.8rem;
+    color: #2c3e50;
+}
+
+/* Item Card */
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #ecf0f1;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.item:hover {
+    transform: translateY(-5px);
+}
+
+.item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.item h3 {
+    font-size: 1.5rem;
+    color: #34495e;
+}
+
+.item p {
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+.item .comments {
+    margin-top: 15px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.item .comments h4 {
+    font-size: 1.2rem;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+.comment {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.comment p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+textarea {
+    width: calc(100% - 20px);
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea:focus {
+    border-color: #27ae60;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #27ae60;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #1e8449;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .item {
+        flex-direction: column;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GrowSphere Marketplace</h1>
+        <p>Buy, Sell, and Connect with Others</p>
+    </header>
+
+    <main>
+            <!-- Upload Item Form -->
+            <section class="upload-section">
+                <h2>Upload Your Item</h2>
+                <form id="upload-form" enctype="multipart/form-data">
+                    <input type="text" name="item_name" placeholder="Item Name" required />
+                    <textarea name="item_description" placeholder="Item Description" required></textarea>
+                    <input type="number" step="0.01" name="item_price" placeholder="Price ($)" required />
+                    <input type="text" name="uploader_contact" placeholder="Your Contact Number" required />
+                    <input type="file" name="item_image" accept="image/*" />
+                    <button type="submit">Upload Item</button>
+                </form>
+            </section>
+        
+            <!-- Items List -->
+            <section id="items-section">
+                <h2>Available Items</h2>
+                <div id="items-container"></div>
+            </section>
+              
+    </main>
+    <!-- Courses and Opportunities Section -->
+    <section class="courses">
+        <div class="courses-container">
+            <h1 class="main-title">Explore Our Comprehensive Online Courses</h1>
+            <p class="intro-text">At GrowSphere, we offer a wide range of engaging and practical courses designed to help you unlock your full potential and earn online.</p>
+    
+            <!-- Courses Section -->
+            <div class="courses-section">
+                <div class="course-category">
+                    <h2>Digital Marketing and Monetization</h2>
+                    <ul>
+                        <li>Social Media Monetization (YouTube, TikTok, Instagram, Facebook)</li>
+                        <li>SEO & Content Marketing</li>
+                        <li>Affiliate Marketing Strategies</li>
+                        <li>Email Marketing Automation</li>
+                        <li>Paid Ads Mastery (Google Ads, Facebook Ads, Instagram Ads)</li>
+                    </ul>
+                </div>
+                <div class="course-category">
+                    <h2>Entrepreneurship and Business Skills</h2>
+                    <ul>
+                        <li>Start Your Online Business</li>
+                        <li>Dropshipping and E-commerce</li>
+                        <li>Mini Importation & Product Sourcing</li>
+                        <li>Business Branding</li>
+                        <li>Sales and Negotiation Skills</li>
+                    </ul>
+                </div>
+                <div class="course-category">
+                    <h2>Technology and Development</h2>
+                    <ul>
+                        <li>Web Development Bootcamp</li>
+                        <li>Mobile App Development</li>
+                        <li>Data Analysis & Visualization</li>
+                        <li>AI and Machine Learning for Beginners</li>
+                        <li>Cybersecurity Fundamentals</li>
+                    </ul>
+                </div>
+                <div class="course-category">
+                    <h2>Financial Literacy and Investment</h2>
+                    <ul>
+                        <li>Personal Finance Management</li>
+                        <li>Cryptocurrency and Blockchain</li>
+                        <li>Stock Market Basics</li>
+                        <li>Forex Trading for Beginners</li>
+                        <li>Passive Income Strategies</li>
+                    </ul>
+                </div>
+                <div class="course-category">
+                    <h2>Creative and Visual Skills</h2>
+                    <ul>
+                        <li>Graphic Design Masterclass</li>
+                        <li>Video Editing & Animation</li>
+                        <li>Photography and Videography Essentials</li>
+                        <li>UI/UX Design</li>
+                        <li>Content Creation for Social Media</li>
+                    </ul>
+                </div>
+                <div class="course-category">
+                    <h2>Writing and Communication</h2>
+                    <ul>
+                        <li>Copywriting Mastery</li>
+                        <li>Creative Writing for Digital Platforms</li>
+                        <li>Professional Blogging</li>
+                        <li>Technical Writing</li>
+                        <li>Public Speaking and Presentation Skills</li>
+                    </ul>
+                </div>
+                <div class="course-category">
+                    <h2>Education and Coaching</h2>
+                    <ul>
+                        <li>How to Create Online Courses</li>
+                        <li>Becoming a Virtual Assistant</li>
+                        <li>Online Tutoring Skills</li>
+                        <li>Life Coaching for Beginners</li>
+                        <li>Language Learning and Teaching</li>
+                    </ul>
+                </div>
+                <div class="course-category">
+                    <h2>Niche-Specific Skills</h2>
+                    <ul>
+                        <li>Event Planning and Coordination</li>
+                        <li>Real Estate Marketing and Sales</li>
+                        <li>Travel Planning and Blogging</li>
+                        <li>Gaming for Income</li>
+                        <li>Health and Wellness Coaching</li>
+                    </ul>
+                </div>
+                <div class="course-category">
+                    <h2>Technical Certifications</h2>
+                    <ul>
+                        <li>Microsoft Office Mastery</li>
+                        <li>Project Management Certification Prep</li>
+                        <li>Cloud Computing Basics</li>
+                        <li>Ethical Hacking</li>
+                        <li>Digital Forensics</li>
+                    </ul>
+                </div>
+                <div class="course-category">
+                    <h2>Lifestyle and Personal Growth</h2>
+                    <ul>
+                        <li>Time Management and Productivity Hacks</li>
+                        <li>Minimalism and Budget-Friendly Living</li>
+                        <li>Self-Discipline for Success</li>
+                        <li>Health and Fitness Online Coaching</li>
+                        <li>Mindfulness and Meditation Techniques</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="start-now">
+  <h2 style="color: gold;">Welcome to GrowSphere Marketplace!</h2>
+  <p  style="color: gold;" >Ready to begin an online cource? Click below to get started.</p>
+  <button class="start-now-btn">START NOW</button>
+  <script>
+  document.querySelector(".start-now-btn").addEventListener("click", () => {
+  window.location.href = "https://chat.whatsapp.com/EqPaCBNtoE8JL7ii52EUAe";
+});
+</script>
+</div>
+
+    <style>
+    .start-now {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  margin: 20px auto;
+  background: linear-gradient(135deg, #0f9d58, #34a853); /* Green gradient */
+  color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  font-family: 'Arial', sans-serif;
+}
+
+.start-now h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.start-now p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.start-now-btn {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #0f9d58;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.start-now-btn:hover {
+  background-color: #0f9d58;
+  color: #ffffff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+    </style>
+    <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/bxslider/jquery.bxslider.min.js"></script>
+    <script src="assets/vendors/circleType/jquery.circleType.js"></script>
+    <script src="assets/vendors/circleType/jquery.lettering.min.js"></script>
+    <script src="assets/vendors/isotope/isotope.js"></script>
+    <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/vendors/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="assets/vendors/nice-select/jquery.nice-select.min.js"></script>
+    <script src="assets/vendors/odometer/odometer.min.js"></script>
+    <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendors/swiper/swiper.min.js"></script>
+    <script src="assets/vendors/vegas/vegas.min.js"></script>
+    <script src="assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="assets/vendors/wow/wow.js"></script>
+    <script src="assets/vendors/extra-scripts/jquery.paroller.min.js"></script>
+    <script src="assets/vendors/language-switcher/jquery.polyglot.language.switcher.js"></script>
+    <script src="assets/js/custom.js"></script>
+</body>
+</html>

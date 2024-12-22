@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLHDBQE7F4"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+   
+          gtag('config', 'G-VLHDBQE7F4');
+        </script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reignite Your Earning Journey-GrowSphere</title>
+<!-- Favicons Icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/growsphere-1.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/growsphere-2.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/growsphere-3.png" />
+<meta name="description" content="Maximize Your Earnings with a Trusted Platform Designed for Success" />	
+   <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+   <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
+   <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+   <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
+   <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+   <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+   <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
+   <link rel="stylesheet" href="assets/vendors/nice-select/nice-select.css" />
+   <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+   <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css" />
+   <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.theme.default.min.css" />
+   <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
+   <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
+   <link rel="stylesheet" href="assets/vendors/thm-icons/style.css">
+   <link rel="stylesheet" href="assets/vendors/language-switcher/polyglot-language-switcher.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <link rel="stylesheet" href="styles.css">
+   <!-- Module css -->
+   <link rel="stylesheet" href="assets/css/module-css/01-header-section.css">
+   <link rel="stylesheet" href="assets/css/module-css/02-banner-section.css">
+   <link rel="stylesheet" href="assets/css/module-css/03-about-section.css">
+   <link rel="stylesheet" href="assets/css/module-css/04-fact-counter-section.css">
+   <link rel="stylesheet" href="assets/css/module-css/05-testimonial-section.css">
+   <link rel="stylesheet" href="assets/css/module-css/06-partner-section.css">
+   <link rel="stylesheet" href="assets/css/module-css/07-footer-section.css">
+   <link rel="stylesheet" href="assets/css/module-css/08-blog-section.css">
+
+   <!-- Template styles -->
+   <link rel="stylesheet" href="assets/css/style.css" />
+   <link rel="stylesheet" href="assets/css/responsive.css" />
+
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet" />
+		<script>
+    const useFetch = async ({customeUrl = "", path, method, data, headers = null, contentType = "application/json", responseType = "application/json",}) => {
+        try {
+            const payload = {
+                method: method,
+                redirect: 'manual',
+                headers: headers ? headers : {
+                    'Accept': 'application/json',
+                },
+                body: contentType == "application/json" ? JSON.stringify(data) : data,
+            }
+
+            if (contentType == "application/json") {
+                payload.headers['Content-Type'] = "application/json"
+            }
+
+            const response = await fetch(customeUrl ? customeUrl : `https://growsphere.ip-ddns.com${path}`, payload)
+
+            if (response.status == 401) {
+                window.location.replace("/signin");
+                return;
+            }
+
+            const res = await response.json();
+            res.status_code = response.status
+            return res;
+        } catch (err) {
+            throw err
+        }
+    }
+
+    const loadSystemTheme = () => {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add("dark-theme")
+            if (document.body.classList.contains("light-theme")) {
+                document.body.classList.remove("light-theme")
+            }
+        } else {
+            document.body.classList.add("light-theme")
+            if (document.body.classList.contains("dark-theme")) {
+                document.body.classList.remove("dark-theme")
+            }
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            const newColorScheme = event.matches ? "dark" : "light";
+
+            if (newColorScheme == "light") {
+                document.body.classList.add("light-theme")
+
+                if (document.body.classList.contains("dark-theme")) {
+                    document.body.classList.remove("dark-theme")
+                }
+            }
+
+            if (newColorScheme == "dark") {
+                document.body.classList.add("dark-theme")
+
+                if (document.body.classList.contains("light-theme")) {
+                    document.body.classList.remove("light-theme")
+                }
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+        const theme_mode = localStorage.getItem('theme_mode')
+		if (theme_mode == "light") {
+			document.body.classList.add("light-theme")
+		}
+
+		if (theme_mode == "dark") {
+			document.body.classList.add("dark-theme")
+		}
+
+        if (theme_mode == "system") {
+			loadSystemTheme()
+		}
+    });
+
+    class MessageClass {
+        success (message, cb = () => {} ) {
+            let wrapper
+            let content
+            if (document.querySelector('.lofty-message-wrapper')) {
+                wrapper = document.querySelector('.lofty-message-wrapper')
+                content = '<div class="lofty-message-box lofty-message-success"><i class="fa-regular fa-circle-check"></i><h2>Success</h2> <span>'+message+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                wrapper.innerHTML = content
+            } else {
+                const appWrapper = document.getElementById('root')
+                wrapper = document.createElement("div");
+                wrapper.classList.add("lofty-message-wrapper")
+                appWrapper.appendChild(wrapper)
+
+                content = '<div class="lofty-message-box lofty-message-success"><i class="fa-regular fa-circle-check"></i><h2>Success</h2> <span>'+message+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                wrapper.innerHTML = content
+            }
+
+            if (wrapper.classList.contains("lofty-message-wrapper-out")) {
+                wrapper.classList.remove("lofty-message-wrapper-out")
+            }
+
+            wrapper.style.display = "flex"
+
+            const close_btn = document.querySelector(".lofty-close-msg-btn")
+            close_btn.addEventListener('click', (e) => {
+                e.preventDefault()
+
+                wrapper.classList.add("lofty-message-wrapper-out")
+                setTimeout(() => {
+                    wrapper.style.display = "none"
+                    cb()
+                }, 250)
+            })
+        }
+
+        error (message, cb = () => {} ) {
+            let wrapper
+            let content
+            let displayMessage = "An error occurred";
+            displayMessage = message
+
+            if (document.querySelector('.lofty-message-wrapper')) {
+                wrapper = document.querySelector('.lofty-message-wrapper')
+                content = '<div class="lofty-message-box lofty-message-error"><i class="fa-regular fa-circle-xmark"></i><h2>Error</h2> <span>'+displayMessage+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                wrapper.innerHTML = content
+            } else {
+                const appWrapper = document.getElementById('root')
+                wrapper = document.createElement("div");
+                wrapper.classList.add("lofty-message-wrapper")
+                appWrapper.appendChild(wrapper)
+
+                content = '<div class="lofty-message-box lofty-message-error"><i class="fa-regular fa-circle-xmark"></i><h2>Error</h2><span>'+displayMessage+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                wrapper.innerHTML = content
+            }
+
+            if (wrapper.classList.contains("lofty-message-wrapper-out")) {
+                wrapper.classList.remove("lofty-message-wrapper-out")
+            }
+
+            wrapper.style.display = "flex"
+
+            const close_btn = document.querySelector(".lofty-close-msg-btn")
+            close_btn.addEventListener('click', (e) => {
+                e.preventDefault()
+
+                wrapper.classList.add("lofty-message-wrapper-out")
+
+                setTimeout(() => {
+                    wrapper.style.display = "none"
+                    cb()
+                }, 250)
+            })
+        }
+    }
+
+    const Message = new MessageClass()
+</script>	</head>
+
+	<body id="root">
+	<style>.wrapper {display: flex;flex-direction: column;justify-content: center;align-items: center;width: 100%;min-height: 100vh;padding: 20px 20px;background-color: var(--bg-color);position: relative;} .wrapper::before {content: '';width: 100%;height: 100%;position: absolute;z-index: 1;top: 0px;left: 0px;background-image: url('assets/images/backgrounds/background1.jpg');background-repeat:no-repeat;background-position: center;background-size: cover;} .wrapper .banner-wrapper {display: flex;flex-direction: column;align-items: center;gap: 6px;margin-bottom: 20px;position: relative;z-index: 3;} .wrapper .banner-wrapper img {height: 90px;width: 250px;border-radius: 8px;object-fit: cover;} .wrapper .banner-wrapper span {color: var(--text-color);font-size: 25px;font-weight: 700;}.form-wrapper {display: flex;margin: 0px auto;flex-direction: column;justify-content: center;position: relative;z-index: 3;align-items: center;padding: 20px 20px 20px 20px;background: var(--container-color);width: 100%;max-width: 480px;border-radius: 8px;} .form-wrapper form {width: 100%;} .form-wrapper form h2 {display: block;color: var(--text-color);font-size: 18px;font-weight: 600;text-align: left;margin-bottom: 5px;} .form-wrapper form .meta {margin-bottom: 20px;} .form-wrapper form .input-sec {display: flex;flex-direction: column;margin-bottom: 20px;width: 100%;max-width: 480px;gap: 8px;}.form-wrapper form .input-sec label {display: block;font-size: 14px;font-weight: 400;color: var(--light-text-color);}.form-wrapper form .input-sec input, .form-wrapper form .input-sec select {width: 100%;height: 45px;padding: 4px 10px;background-color: transparent;color: var(--text-color);border-radius: 4px;border: 0.3px solid var(--light-text-color);} .form-wrapper form .row {display: flex;align-items: flex-end;gap: 10px;width: 100%;max-width: 480px;}.form-wrapper form .row .input-sec {flex: 1;} .form-wrapper form button {display: flex;justify-content: center;align-items: center;width: 100%;border: none;border-radius: 8px;padding: 18px 0px;font-size: 15px;font-weight: 600;color: #fff;max-width: 480px;cursor: pointer;background-color: #0F4674;} .form-wrapper form .forgot-pass {display: flex;justify-content: flex-end;align-items: center;max-width: 480px;width: 100%;margin-top: -10px;margin-bottom: 20px;}.form-wrapper form .forgot-pass a {font-size: 14px;font-weight: 400;color:blue;} .form-wrapper .meta {display: flex;gap: 4px;} .form-wrapper .meta span {color: rgb(152, 162, 179);font-size: 13px;font-weight: 400;}.form-wrapper .meta span:last-child {font-weight: 500;color: blue;} @media screen and (min-width: 880px) { .form-wrapper form {position: static;flex: 1;}}</style>
+
+<div class="wrapper">
+    <div class="banner-wrapper">
+        <img src="assets/images/backgrounds/background-11.png" alt="GrowSphere">
+        
+    </div>
+
+    <div class="form-wrapper">
+        <form class="form-container" method="POST" action="/signin">
+            <h2>Welcome back!</h2>
+            <a class="meta" href="/signup">
+                <span>Don't have an account? </span>
+                <span>sign up</span>
+            </a>
+            <div class="input-sec">
+                <label for="#">Your username</label>
+                <input name="username" type="text" placeholder="Your username" />
+            </div>
+            <div class="input-sec">
+                <label for="#">Password</label>
+                <input name="password" type="password" placeholder="Password" />
+            </div>
+            <input type="hidden" name="nocsrf" value="f20941adf008b653ae99545d8763ff3f93c9c7533bdba87dcb38fa4a237cdf795ea8da2f95ed9dcc8a5dd64cbbed24040fdefa111c751ad90cdc7c062e258bc4">
+
+            <button class="signin-btn">Sign in</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+     const BASE_URL = "https://growsphereback.onrender.com";
+   const form = document.querySelector('.form-container');
+const submit_btn = document.querySelector('.form-container .signin-btn');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevent default form submission
+
+    const formData = new FormData(form);
+    const username = formData.get('username').trim();
+    const password = formData.get('password').trim();
+
+    // Validate input fields
+    if (!username || !password) {
+        showTemporaryMessage("Please enter both username and password.","warning"); // Ensure message displays
+        return;
+    }
+
+    try {
+        submit_btn.classList.add("btn-loader"); // Show loading spinner
+
+        const response = await fetch(`${BASE_URL}/signin`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json", // Use JSON format
+            },
+            body: JSON.stringify({ username, password }),
+            credentials: "include", // Include cookies for session management
+        });
+
+        const result = await response.json();
+
+        submit_btn.classList.remove("btn-loader"); // Remove loading spinner
+
+        if (response.ok) {
+            window.location.href = "/dashboard"; // Redirect to dashboard
+        } else {
+            showTemporaryMessage("Login failed. Please try again.","warning");
+        }
+    } catch (error) {
+        submit_btn.classList.remove("btn-loader"); // Remove loading spinner
+        console.error("Error during sign-in:", error);
+        showTemporaryMessage("An error occurred. Please try again.","warning");
+    }
+});
+function showTemporaryMessage(message, type) { let messageContainer = document.getElementById("message-container");if (!messageContainer) {messageContainer = document.createElement("div");messageContainer.id = "message-container"; messageContainer.style.position = "fixed"; messageContainer.style.top = "10px"; messageContainer.style.right = "10px"; messageContainer.style.zIndex = "1000";document.body.appendChild(messageContainer);}const messageElement = document.createElement("div");messageElement.textContent = message;messageElement.style.padding = "10px 20px";messageElement.style.margin = "5px";messageElement.style.borderRadius = "5px";messageElement.style.color = "white";messageElement.style.fontWeight = "bold";messageElement.style.opacity = "1";messageElement.style.transition = "opacity 0.5s ease"; if (type === "success") { messageElement.style.backgroundColor = "#4caf50"; } else if (type === "warning") { messageElement.style.backgroundColor = "#f44336";   } messageContainer.appendChild(messageElement);setTimeout(() => { messageElement.style.opacity = "0"; setTimeout(() => {    messageContainer.removeChild(messageElement); }, 500);}, 4000);}
+</script>
+<script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+  <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendors/bxslider/jquery.bxslider.min.js"></script>
+  <script src="assets/vendors/circleType/jquery.circleType.js"></script>
+  <script src="assets/vendors/circleType/jquery.lettering.min.js"></script>
+  <script src="assets/vendors/isotope/isotope.js"></script>
+  <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+  <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+  <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+  <script src="assets/vendors/jquery-migrate/jquery-migrate.min.js"></script>
+  <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
+  <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+  <script src="assets/vendors/nice-select/jquery.nice-select.min.js"></script>
+  <script src="assets/vendors/odometer/odometer.min.js"></script>
+  <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendors/swiper/swiper.min.js"></script>
+  <script src="assets/vendors/vegas/vegas.min.js"></script>
+  <script src="assets/vendors/wnumb/wNumb.min.js"></script>
+  <script src="assets/vendors/wow/wow.js"></script>
+  <script src="assets/vendors/extra-scripts/jquery.paroller.min.js"></script>
+  <script src="assets/vendors/language-switcher/jquery.polyglot.language.switcher.js"></script>
+  <script src="assets/js/custom.js"></script>
+	</body>
+</html>

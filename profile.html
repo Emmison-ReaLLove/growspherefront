@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLHDBQE7F4"></script>
+ <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'G-VLHDBQE7F4');
+ </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/growsphere-1.png" />
+ <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/growsphere-2.png" />
+ <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/growsphere-3.png" />
+ <meta name="description" content="Maximize Your Earnings with a Trusted Platform Designed for Success" />
+ <script>
+  const useFetch = async ({customeUrl = "", path, method, data, headers = null, contentType = "application/json", responseType = "application/json",}) => {
+      try {
+          const payload = {
+              method: method,
+              redirect: 'manual',
+              headers: headers ? headers : {
+                  'Accept': 'application/json',
+              },
+              body: contentType == "application/json" ? JSON.stringify(data) : data,
+          }
+
+          if (contentType == "application/json") {
+              payload.headers['Content-Type'] = "application/json"
+          }
+
+          const response = await fetch(customeUrl ? customeUrl : `growsphere.ip-ddns.com${path}`, payload)
+
+          if (response.status == 401) {
+              window.location.replace("https://growsphere.ip-ddns.com/signin");
+              return;
+          }
+
+          const res = await response.json();
+          res.status_code = response.status
+          return res;
+      } catch (err) {
+          throw err
+      }
+  }
+
+  const loadSystemTheme = () => {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.body.classList.add("dark-theme")
+          if (document.body.classList.contains("light-theme")) {
+              document.body.classList.remove("light-theme")
+          }
+      } else {
+          document.body.classList.add("light-theme")
+          if (document.body.classList.contains("dark-theme")) {
+              document.body.classList.remove("dark-theme")
+          }
+      }
+
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+          const newColorScheme = event.matches ? "dark" : "light";
+
+          if (newColorScheme == "light") {
+              document.body.classList.add("light-theme")
+
+              if (document.body.classList.contains("dark-theme")) {
+                  document.body.classList.remove("dark-theme")
+              }
+          }
+
+          if (newColorScheme == "dark") {
+              document.body.classList.add("dark-theme")
+
+              if (document.body.classList.contains("light-theme")) {
+                  document.body.classList.remove("light-theme")
+              }
+          }
+      });
+  }
+
+  document.addEventListener("DOMContentLoaded", function(event) {
+      const theme_mode = localStorage.getItem('theme_mode')
+  if (theme_mode == "light") {
+    document.body.classList.add("light-theme")
+  }
+
+  if (theme_mode == "dark") {
+    document.body.classList.add("dark-theme")
+  }
+
+      if (theme_mode == "system") {
+    loadSystemTheme()
+  }
+  });
+
+  class MessageClass {
+      success (message, cb = () => {} ) {
+          let wrapper
+          let content
+          if (document.querySelector('.lofty-message-wrapper')) {
+              wrapper = document.querySelector('.lofty-message-wrapper')
+              content = '<div class="lofty-message-box lofty-message-success"><i class="fa-regular fa-circle-check"></i><h2>Success</h2> <span>'+message+'</span><button class="lofty-close-msg-btn">close</button></div>';
+              wrapper.innerHTML = content
+          } else {
+              const appWrapper = document.getElementById('root')
+              wrapper = document.createElement("div");
+              wrapper.classList.add("lofty-message-wrapper")
+              appWrapper.appendChild(wrapper)
+
+              content = '<div class="lofty-message-box lofty-message-success"><i class="fa-regular fa-circle-check"></i><h2>Success</h2> <span>'+message+'</span><button class="lofty-close-msg-btn">close</button></div>';
+              wrapper.innerHTML = content
+          }
+
+          if (wrapper.classList.contains("lofty-message-wrapper-out")) {
+              wrapper.classList.remove("lofty-message-wrapper-out")
+          }
+
+          wrapper.style.display = "flex"
+
+          const close_btn = document.querySelector(".lofty-close-msg-btn")
+          close_btn.addEventListener('click', (e) => {
+              e.preventDefault()
+
+              wrapper.classList.add("lofty-message-wrapper-out")
+              setTimeout(() => {
+                  wrapper.style.display = "none"
+                  cb()
+              }, 250)
+          })
+      }
+
+      error (message, cb = () => {} ) {
+          let wrapper
+          let content
+          let displayMessage = "An error occurred";
+          displayMessage = message
+
+          if (document.querySelector('.lofty-message-wrapper')) {
+              wrapper = document.querySelector('.lofty-message-wrapper')
+              content = '<div class="lofty-message-box lofty-message-error"><i class="fa-regular fa-circle-xmark"></i><h2>Error</h2> <span>'+displayMessage+'</span><button class="lofty-close-msg-btn">close</button></div>';
+              wrapper.innerHTML = content
+          } else {
+              const appWrapper = document.getElementById('root')
+              wrapper = document.createElement("div");
+              wrapper.classList.add("lofty-message-wrapper")
+              appWrapper.appendChild(wrapper)
+
+              content = '<div class="lofty-message-box lofty-message-error"><i class="fa-regular fa-circle-xmark"></i><h2>Error</h2><span>'+displayMessage+'</span><button class="lofty-close-msg-btn">close</button></div>';
+              wrapper.innerHTML = content
+          }
+
+          if (wrapper.classList.contains("lofty-message-wrapper-out")) {
+              wrapper.classList.remove("lofty-message-wrapper-out")
+          }
+
+          wrapper.style.display = "flex"
+
+          const close_btn = document.querySelector(".lofty-close-msg-btn")
+          close_btn.addEventListener('click', (e) => {
+              e.preventDefault()
+
+              wrapper.classList.add("lofty-message-wrapper-out")
+
+              setTimeout(() => {
+                  wrapper.style.display = "none"
+                  cb()
+              }, 250)
+          })
+      }
+  }
+
+  const Message = new MessageClass()
+</script>		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet" />	
+</head>
+<body>
+  <div class="container">
+    <div class="profile-card">
+      <h2>👤 User Profile</h2>
+      <div class="profile-info">
+        <div>
+          <strong>First Name:</strong> <span id="first-name">--</span>
+        </div>
+        <div>
+          <strong>Last Name:</strong> <span id="last-name">--</span>
+        </div>
+        <div>
+          <strong>Username:</strong> <span id="username">--</span>
+        </div>
+        <div>
+          <strong>Email:</strong> <span id="email">--</span>
+        </div>
+        <div>
+          <strong>Phone Number:</strong> <span id="phone-number">--</span>
+        </div>
+        <div>
+          <strong>Country:</strong> <span id="country">--</span>
+        </div>
+        <div>
+          <strong>Active Package:</strong> <span id="active-package">--</span>
+        </div>
+        <div>
+          <strong>Coupon Code:</strong> <span id="coupon-code">--</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #f3c623, #d1a54f, #ffd700); /* HD Gold Gradient */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card {
+  text-align: center;
+}
+
+.profile-card h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.profile-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.profile-info div {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.profile-info strong {
+  display: block;
+  color: #555;
+}
+
+button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #45a049;
+}
+
+  </style>
+  <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+  <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendors/bxslider/jquery.bxslider.min.js"></script>
+  <script src="assets/vendors/circleType/jquery.circleType.js"></script>
+  <script src="assets/vendors/circleType/jquery.lettering.min.js"></script>
+  <script src="assets/vendors/isotope/isotope.js"></script>
+  <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+  <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+  <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+  <script src="assets/vendors/jquery-migrate/jquery-migrate.min.js"></script>
+  <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
+  <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+  <script src="assets/vendors/nice-select/jquery.nice-select.min.js"></script>
+  <script src="assets/vendors/odometer/odometer.min.js"></script>
+  <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendors/swiper/swiper.min.js"></script>
+  <script src="assets/vendors/vegas/vegas.min.js"></script>
+  <script src="assets/vendors/wnumb/wNumb.min.js"></script>
+  <script src="assets/vendors/wow/wow.js"></script>
+  <script src="assets/vendors/extra-scripts/jquery.paroller.min.js"></script>
+  <script src="assets/vendors/language-switcher/jquery.polyglot.language.switcher.js"></script>
+  <script src="assets/js/custom.js"></script>
+</body>
+</html>

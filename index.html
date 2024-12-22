@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<!-- Google tag (gtag.js) -->
+     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLHDBQE7F4"></script>
+     <script>
+       window.dataLayer = window.dataLayer || [];
+       function gtag(){dataLayer.push(arguments);}
+       gtag('js', new Date());
+
+       gtag('config', 'G-VLHDBQE7F4');
+     </script>
+     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>GrowSphere</title>
+     <!-- Favicons Icons -->
+     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/growsphere-1.png" />
+     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/growsphere-2.png" />
+     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/growsphere-3.png" />
+     <meta name="description" content="Maximize Your Earnings with a Trusted Platform Designed for Success" />	
+        <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+        <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
+        <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
+        <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+        <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+        <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
+        <link rel="stylesheet" href="assets/vendors/nice-select/nice-select.css" />
+        <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+        <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css" />
+        <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.theme.default.min.css" />
+        <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
+        <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
+        <link rel="stylesheet" href="assets/vendors/thm-icons/style.css">
+        <link rel="stylesheet" href="assets/vendors/language-switcher/polyglot-language-switcher.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    
+        <link rel="stylesheet" href="styles.css">
+        <!-- Module css -->
+        <link rel="stylesheet" href="assets/css/module-css/01-header-section.css">
+        <link rel="stylesheet" href="assets/css/module-css/02-banner-section.css">
+        <link rel="stylesheet" href="assets/css/module-css/03-about-section.css">
+        <link rel="stylesheet" href="assets/css/module-css/04-fact-counter-section.css">
+        <link rel="stylesheet" href="assets/css/module-css/05-testimonial-section.css">
+        <link rel="stylesheet" href="assets/css/module-css/06-partner-section.css">
+        <link rel="stylesheet" href="assets/css/module-css/07-footer-section.css">
+        <link rel="stylesheet" href="assets/css/module-css/08-blog-section.css">
+    
+        <!-- Template styles -->
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="assets/css/responsive.css" />
+		<script>
+    const useFetch = async ({customeUrl = "", path, method, data, headers = null, contentType = "application/json", responseType = "application/json",}) => {
+        try {
+            const payload = {
+                method: method,
+                redirect: 'manual',
+                headers: headers ? headers : {
+                    'Accept': 'application/json',
+                },
+                body: contentType == "application/json" ? JSON.stringify(data) : data,
+            }
+
+            if (contentType == "application/json") {
+                payload.headers['Content-Type'] = "application/json"
+            }
+
+            const response = await fetch(customeUrl ? customeUrl : `growsphere.ip-ddns.com${path}`, payload)
+
+            if (response.status == 401) {
+                window.location.replace("https://growsphere.ip-ddns.com/signin");
+                return;
+            }
+
+            const res = await response.json();
+            res.status_code = response.status
+            return res;
+        } catch (err) {
+            throw err
+        }
+    }
+
+    const loadSystemTheme = () => {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add("dark-theme")
+            if (document.body.classList.contains("light-theme")) {
+                document.body.classList.remove("light-theme")
+            }
+        } else {
+            document.body.classList.add("light-theme")
+            if (document.body.classList.contains("dark-theme")) {
+                document.body.classList.remove("dark-theme")
+            }
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            const newColorScheme = event.matches ? "dark" : "light";
+
+            if (newColorScheme == "light") {
+                document.body.classList.add("light-theme")
+
+                if (document.body.classList.contains("dark-theme")) {
+                    document.body.classList.remove("dark-theme")
+                }
+            }
+
+            if (newColorScheme == "dark") {
+                document.body.classList.add("dark-theme")
+
+                if (document.body.classList.contains("light-theme")) {
+                    document.body.classList.remove("light-theme")
+                }
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+        const theme_mode = localStorage.getItem('theme_mode')
+		if (theme_mode == "light") {
+			document.body.classList.add("light-theme")
+		}
+
+		if (theme_mode == "dark") {
+			document.body.classList.add("dark-theme")
+		}
+
+        if (theme_mode == "system") {
+			loadSystemTheme()
+		}
+    });
+
+    class MessageClass {
+        success (message, cb = () => {} ) {
+            let wrapper
+            let content
+            if (document.querySelector('.lofty-message-wrapper')) {
+                wrapper = document.querySelector('.lofty-message-wrapper')
+                content = '<div class="lofty-message-box lofty-message-success"><i class="fa-regular fa-circle-check"></i><h2>Success</h2> <span>'+message+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                wrapper.innerHTML = content
+            } else {
+                const appWrapper = document.getElementById('root')
+                wrapper = document.createElement("div");
+                wrapper.classList.add("lofty-message-wrapper")
+                appWrapper.appendChild(wrapper)
+
+                content = '<div class="lofty-message-box lofty-message-success"><i class="fa-regular fa-circle-check"></i><h2>Success</h2> <span>'+message+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                wrapper.innerHTML = content
+            }
+
+            if (wrapper.classList.contains("lofty-message-wrapper-out")) {
+                wrapper.classList.remove("lofty-message-wrapper-out")
+            }
+
+            wrapper.style.display = "flex"
+
+            const close_btn = document.querySelector(".lofty-close-msg-btn")
+            close_btn.addEventListener('click', (e) => {
+                e.preventDefault()
+
+                wrapper.classList.add("lofty-message-wrapper-out")
+                setTimeout(() => {
+                    wrapper.style.display = "none"
+                    cb()
+                }, 250)
+            })
+        }
+
+        error (message, cb = () => {} ) {
+            let wrapper
+            let content
+            let displayMessage = "An error occurred";
+            displayMessage = message
+
+            if (document.querySelector('.lofty-message-wrapper')) {
+                wrapper = document.querySelector('.lofty-message-wrapper')
+                content = '<div class="lofty-message-box lofty-message-error"><i class="fa-regular fa-circle-xmark"></i><h2>Error</h2> <span>'+displayMessage+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                wrapper.innerHTML = content
+            } else {
+                const appWrapper = document.getElementById('root')
+                wrapper = document.createElement("div");
+                wrapper.classList.add("lofty-message-wrapper")
+                appWrapper.appendChild(wrapper)
+
+                content = '<div class="lofty-message-box lofty-message-error"><i class="fa-regular fa-circle-xmark"></i><h2>Error</h2><span>'+displayMessage+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                wrapper.innerHTML = content
+            }
+
+            if (wrapper.classList.contains("lofty-message-wrapper-out")) {
+                wrapper.classList.remove("lofty-message-wrapper-out")
+            }
+
+            wrapper.style.display = "flex"
+
+            const close_btn = document.querySelector(".lofty-close-msg-btn")
+            close_btn.addEventListener('click', (e) => {
+                e.preventDefault()
+
+                wrapper.classList.add("lofty-message-wrapper-out")
+
+                setTimeout(() => {
+                    wrapper.style.display = "none"
+                    cb()
+                }, 250)
+            })
+        }
+    }
+
+    const Message = new MessageClass()
+</script>		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet" />
+	</head>
+
+	<body id="root">	
+	<style>.site-header {display: flex;flex-direction: column;width: 100%;background-color: var(--header-bg-color);position: relative;} .site-header .top-bar {display: flex;justify-content: space-between;align-items: center;position: relative;width: 100%;height: 90px;padding: 20px 8%;}.site-header .top-bar .logo img {height: 40px;}.site-header .top-bar .logo h2 {color: var(--text-color);font-size: 16px;font-weight: 600;} .site-header .top-bar .toggle-menu {display: flex;justify-content: center;align-items: center;flex-direction: column;padding: 0px 8px;width: 35px;height: 35px;cursor: pointer;}.site-header .top-bar .toggle-menu span, .site-header .top-bar .toggle-menu::before, .site-header .top-bar .toggle-menu::after {content: '';display: block;width: 100%;height: 1px;background-color: var(--text-color);}.site-header .top-bar .toggle-menu span {margin: 4px 0px;} .site-header .top-bar .site-nav {display: none;position: absolute;top: 0px;left: 0px;width: 100%;height: 100vh;z-index: 9999;}.site-header .top-bar .site-nav::before {content: '';display: block;width: 100%;height: 100%;top: 0px;left: 0px;position: absolute;background-color: #0006;cursor: pointer;}.site-header .top-bar .site-nav nav {position: relative;width: 240px;background-color: inherit;left: -240px;transition: all 0.5s ease-in-out;}.site-header .top-bar .site-nav nav .nav-logo {padding: 20px 20px;}.site-header .top-bar .site-nav nav .nav-logo img {height: 40px;}.site-header .top-bar .site-nav nav ul:last-child {display: block;gap: 20px;}.site-header .top-bar .site-nav nav ul:last-child li {padding: 0px 20px;}.site-header .top-bar .site-nav nav ul:last-child li a {display: flex;justify-content: center;align-items: center;padding: 15px 20px;border: 1px solid var(--primary-color);color: var(--primary-color);border-radius: 4px;font-size: 12px;font-weight: 500;text-transform: uppercase;}.site-header .top-bar .site-nav nav ul:last-child li:last-child {margin-top: 15px;}.site-header .top-bar .site-nav nav ul:last-child li:last-child a {background-color: var(--primary-color);color: #fff;}.site-header .top-bar .site-nav nav ul.menu-links {flex: 1;margin-bottom: 20px;}.site-header .top-bar .site-nav nav ul.menu-links li {padding: 0px 20px;}.site-header .top-bar .site-nav nav ul.menu-links li a {display: block;font-size: 13px;color: var(--text-color);font-weight: 600;padding: 15px 0px;text-transform: uppercase;border-bottom: 0px solid #e1aead66;} .site-header .actions {display: flex;justify-content: center;align-items: center;position: absolute;left: 0px;bottom: 20px;width: 100%;} .site-header .actions a {display: flex;justify-content: center;align-items: center;width: 150px;height: 45px;border-radius: 8px;font-size: 16px;font-weight: 500;background-color: var(--primary-color);color: var(--text-color);}.home-header {background-color: var(--header-bg-color);} @media screen and (min-width: 880px) { .site-header .top-bar {justify-self: unset;}}@media screen and (min-width: 880px) {.site-header .top-bar .toggle-menu {display: none;}}@media screen and (min-width: 880px) {.site-header .top-bar .site-nav::before {display: none;}}@media screen and (min-width: 880px) {.site-header .top-bar .site-nav {display: flex;flex: 1;position: unset;background-color: unset;height: unset;width: unset;}}@media screen and (min-width: 880px) {.site-header .top-bar .site-nav nav {display: flex;flex-direction: row;background-color: unset;flex: 1;width: unset;height: unset;left: unset;}}@media screen and (min-width: 880px) {.site-header .top-bar .site-nav nav .nav-logo {display: none;}}@media screen and (min-width: 880px) {.site-header .top-bar .site-nav nav ul {display: flex;flex-direction: row;justify-content: center;}}@media screen and (min-width: 880px) {.site-header .top-bar .site-nav nav ul:last-child {display: flex;}}@media screen and (min-width: 880px) {.site-header .top-bar .site-nav nav ul:last-child li {padding: unset;}}@media screen and (min-width: 880px) {.site-header .top-bar .site-nav nav ul:last-child li a {padding: 10px 20px;}}@media screen and (min-width: 880px) {.site-header .top-bar .site-nav nav ul:last-child li:last-child {margin-top: 0px;}}@media screen and (min-width: 880px) {.site-header .top-bar .site-nav nav ul.menu-links {margin-bottom: 0px;}}@media screen and (min-width: 880px) {.site-header .top-bar .site-nav nav ul.menu-links li {padding: 0px;}}@media screen and (min-width: 880px) {.site-header .top-bar .site-nav nav ul.menu-links li a {display: flex;flex-direction: row;justify-content: center;padding: 15px 20px;}}</style>
+<style>
+    .site-header .top-bar .green-bg {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px; /* Match the width of the toggle menu */
+  height: 100vh;
+  background-color: #00ff66;
+  opacity: 0.5;
+  z-index: 9989;
+  transition: all 0.5s ease;
+}
+.site-header .top-bar .site-nav nav ul.menu-links li {
+    border-bottom: 1px solid rgba(240, 240, 240, 0.4); /* #f0f0f0 with 50% transparency */
+    display: inline-block;
+}
+.site-header .top-bar .site-nav nav ul.menu-links li:last-child {
+  border-bottom:none; /* Light separation line */
+}
+.site-header .top-bar .site-nav nav{
+    transition: all 0.5s ease;
+}
+</style>
+	<header class="site-header home-header">
+  <div class="top-bar">
+    <div class="logo">
+    <img src="assets/images/resources/growsphere.jpg" alt="logo" style="border-radius: 4px;">
+    </div>
+
+    <!-- Green Background Div -->
+    <div class="green-bg"></div>
+
+    <!-- Menu Section -->
+    <div class="site-nav">
+      <nav>
+        <div class="nav-logo">
+         <img src="assets/images/resources/growsphere.jpg" alt="logo" style="border-radius: 4px;">
+        </div>
+
+        <ul class="menu-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/signin">My Profile</a></li>
+          <li><a href="/signup">Marketplace</a></li>
+        </ul>
+
+        <ul class="auth-menu">
+          <li><a href="/signin">Login</a></li>
+          <li><a href="/signup">Signup</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Toggle Menu -->
+    <div class="toggle-menu">
+      <span></span>
+    </div>
+  </div>
+</header>
+
+	<script>
+		let toggleMenu = document.querySelector(".toggle-menu");
+let greenBg = document.querySelector(".green-bg");
+let menuBox = document.querySelector(".site-nav");
+
+toggleMenu.addEventListener('click', () => {
+  // First slide in the green background
+  greenBg.style.display = "block"; // Make the green background visible
+  setTimeout(() => {
+    greenBg.style.width = "250px"; // Adjust width to match toggle menu
+  }, 100);
+  
+  // Then slide in the menu
+  setTimeout(() => {
+    menuBox.style.display = "flex";
+    menuBox.querySelector("nav").style.left = "0px"; // Slide in the menu
+  }, 700); // Delay the menu appearance to let the green background slide in
+});
+
+menuBox.addEventListener('click', (e) => {
+  if (e.target == menuBox || e.target.classList.contains("close-menu")) {
+    // Slide out the menu first
+    menuBox.querySelector("nav").style.left = "-240px";
+    setTimeout(() => {
+      menuBox.style.display = "none";
+      greenBg.style.width = "0"; // Slide out the green background
+    }, 600); // Ensure the menu leaves before the green background
+  }
+});
+	</script>
+	<div class="site-wrapper"> <!-- wrapper -->
+			<!-- container-->
+			<div class="container">
+	<style>.home-page {background-color: var(--bg-color);padding: 0px 0px 0px 0px;position: relative;} .home-page .hero-wrapper {padding: 100px 8%;} .home-page .hero-wrapper .hero-content {width: 100%;max-width: 1240px;margin: 0px auto;}.home-page .hero-wrapper .hero-content .text-content {display: flex;flex-direction: column;align-items: center;max-width: 880px;margin: 0px auto;position: relative;z-index: 2;}.home-page .hero-wrapper .hero-content .text-content h2 {font-size: 35px;text-align: center;font-weight: 700;color: var(--light-text-color);margin-bottom: 30px;}.home-page .hero-wrapper .hero-content .text-content .video-wrapper {width: 100%;max-width: 480px;margin: 0px auto 20px auto;}.home-page .hero-wrapper .hero-content .text-content .video-wrapper iframe {max-width: 100%;}.home-page .hero-wrapper .hero-content .text-content p {text-align: center;font-size: 16px;line-height: 24px;font-weight: 400;color: var(--light-text-color);}.home-page .hero-wrapper .hero-content .text-content .actions {margin-top: 40px;}.home-page .hero-wrapper .hero-content .text-content .actions a {display: flex;justify-content: center;align-items: center;gap: 10px;height: 45px;padding: 0px 20px;border-radius: 8px;background-color: var(--primary-color);color: #fff;font-size: 15px;}.home-page .hero-wrapper .hero-content .img-content {position: relative;z-index: 1;display: flex;align-items: center;justify-content: center;margin-top: 40px;width: 100%;}.home-page .hero-wrapper .hero-content .img-content::before {content: '';width: 100%;aspect-ratio: 1 / 1;background-image: url('/assets/svg/ellipse-vector.svg');background-position: center;background-size: contain;position: absolute;z-index: 1;background-repeat: no-repeat;}.home-page .hero-wrapper .hero-content .img-content img {position: relative;z-index: 2;width: 100%;} .home-page .features-wrapper {padding: 100px 8%;} .home-page .features-wrapper .features-content {width: 100%;max-width: 1240px;margin: 0px auto;}.home-page .features-wrapper .features-content h2 {font-size: 30px;font-weight: 700;color: var(--light-text-color);margin-bottom: 40px;text-align: center;}.home-page .features-wrapper .features-content ul {display: flex;flex-direction: column;gap: 40px;}.home-page .features-wrapper .features-content ul li {display: flex;flex-direction: column;align-items: center;color: var(--light-text-color);text-align: center;}.home-page .features-wrapper .features-content ul li img {width: 100%;max-width: 100px;margin-bottom: 10px;}.home-page .features-wrapper .features-content ul li h3 {font-size: 18px;font-weight: 600;margin-bottom: 10px;}.home-page .features-wrapper .features-content ul li span {font-size: 14px;font-weight: 400;text-align: center;line-height: 22px;} .home-page .offers-wrapper {padding: 100px 8%;} .home-page .offers-wrapper h2 {font-size: 20px;color: var(--light-text-color);max-width: 1240px;margin: 0px auto;margin-bottom: 40px;} .home-page .offers-wrapper .offers-content {display: flex;flex-direction: column-reverse;width: 100%;max-width: 1240px;margin: 0px auto;gap: 40px;}.home-page .offers-wrapper .offers-content .text-content {flex: 1;}.home-page .offers-wrapper .offers-content .text-content h3 {font-size: 34px;font-weight: 600;color: var(--light-text-color);margin-bottom: 20px;}.home-page .offers-wrapper .offers-content .text-content p {font-size: 17px;font-weight: 400;line-height: 26px;color: var(--light-text-color);margin-bottom: 40px;}.home-page .offers-wrapper .offers-content .text-content .actions a {display: flex;align-items: center;height: 55px;border-radius: 6px;padding: 0px 24px;width: fit-content;background-color: var(--primary-color);}.home-page .offers-wrapper .offers-content .text-content .actions a span {color: #fff;font-size: 15px;font-weight: 600;}.home-page .offers-wrapper .offers-content .text-content .video-wrapper {display: flex;justify-content: center;align-items: center;width: 100%;max-width: 480px;margin: 20px auto 20px auto;}.home-page .offers-wrapper .offers-content .text-content .video-wrapper iframe {max-width: 100%;}.home-page .offers-wrapper .offers-content .img-content {flex: 1;max-width: 480px;}.home-page .offers-wrapper .offers-content .img-content img {width: 100%;} .home-page .offers-alt-wrapper {padding: 100px 8%;border-top: 1px solid #393939;} .home-page .offers-alt-wrapper h2 {font-size: 20px;color: var(--light-text-color);max-width: 1240px;margin: 0px auto;margin-bottom: 40px;} .home-page .offers-alt-wrapper .offers-alt-content {display: flex;flex-direction: column-reverse;width: 100%;max-width: 1240px;margin: 0px auto;gap: 40px;}.home-page .offers-alt-wrapper .offers-alt-content .text-content {flex: 1;}.home-page .offers-alt-wrapper .offers-alt-content .text-content h3 {font-size: 34px;font-weight: 600;color: var(--light-text-color);margin-bottom: 20px;}.home-page .offers-alt-wrapper .offers-alt-content .text-content p {font-size: 17px;font-weight: 400;line-height: 26px;color: var(--light-text-color);margin-bottom: 40px;}.home-page .offers-alt-wrapper .offers-alt-content .text-content .actions a {display: flex;align-items: center;height: 55px;border-radius: 6px;padding: 0px 24px;width: fit-content;background-color: var(--primary-color);}.home-page .offers-alt-wrapper .offers-alt-content .text-content .actions a span {color: #fff;font-size: 15px;font-weight: 600;}.home-page .offers-alt-wrapper .offers-alt-content .img-content {flex: 1;max-width: 480px;}.home-page .offers-alt-wrapper .offers-alt-content .img-content img {width: 100%;} .home-page .pricing-wrapper {padding: 100px 8%;} .home-page .pricing-wrapper .pricing-content {width: 100%;max-width: 1240px;margin: 0px auto;}.home-page .pricing-wrapper .pricing-content .head {display: flex;flex-direction: column;align-items: center;gap: 10px;}.home-page .pricing-wrapper .pricing-content .head h2 {font-size: 40px;font-weight: 800;color: var(--light-text-color);}.home-page .pricing-wrapper .pricing-content .head h6 {font-size: 30px;font-weight: 700;color: var(--light-text-color);margin-bottom: 40px;}.home-page .pricing-wrapper .pricing-content ul {display: flex;flex-direction: column;gap: 40px;}.home-page .pricing-wrapper .pricing-content ul li {padding: 20px;border-radius: 10px;background-color: var(--primary-color);border: 1px solid #121E2A;}.home-page .pricing-wrapper .pricing-content ul li .price {display: flex;align-items: flex-end;gap: 10px;margin-bottom: 10px;}.home-page .pricing-wrapper .pricing-content ul li .price span {font-size: 40px;font-weight: 600;color: #F8F9FA;}.home-page .pricing-wrapper .pricing-content ul li .price span:last-of-type {font-size: 15px;font-weight: 400;margin-bottom: 4px;}.home-page .pricing-wrapper .pricing-content ul li h3 {font-size: 27px;font-weight: 500;color: #F8F9FA;margin-bottom: 10px;}.home-page .pricing-wrapper .pricing-content ul li p {font-size: 14px;font-weight: 400;color: #F8F9FA;margin-bottom: 30px;}.home-page .pricing-wrapper .pricing-content ul li .features {display: flex;flex-direction: column;gap: 10px;margin-bottom: 30px;}.home-page .pricing-wrapper .pricing-content ul li .features .items {display: flex;align-items: center;gap: 15px;}.home-page .pricing-wrapper .pricing-content ul li .features .items .circle {width: 17px;height: 17px;border-radius: 50%;background-color: #1e5b97;}.home-page .pricing-wrapper .pricing-content ul li .features .items span {font-size: 15px;font-weight: 400;color: #fff;}.home-page .pricing-wrapper .pricing-content ul li a {display: flex;justify-content: center;align-items: center;gap: 10px;height: 50px;width: 100%;border-radius: 8px;background-color: #1e5b97;}.home-page .pricing-wrapper .pricing-content ul li a span {color: #F8F9FA;font-size: 16px;}.home-page .pricing-wrapper .pricing-content ul li a i {font-size: 18px;color: #F8F9FA;}.home-page .pricing-wrapper .pricing-content ul li:nth-of-type(2) {background-color: #D4AF37;border: 1px solid #121E2A;} .home-page .faq-wrapper {padding: 100px 8%;} .home-page .faq-wrapper .faq-content {width: 100%;max-width: 1240px;margin: 0px auto;}.home-page .faq-wrapper .faq-content .head {display: flex;flex-direction: column;align-items: center;gap: 10px;}.home-page .faq-wrapper .faq-content .head h2 {font-size: 20px;font-weight: 700;color: var(--light-text-color);}.home-page .faq-wrapper .faq-content .head h6 {font-size: 20px;font-weight: 400;color: var(--light-text-color);margin-bottom: 40px;}.home-page .faq-wrapper .faq-content ul li {cursor: pointer;}.home-page .faq-wrapper .faq-content ul li .head-content {display: flex;padding: 20px 0px;border-bottom: 1px solid #404a54;}.home-page .faq-wrapper .faq-content ul li .head-content h3 {flex: 1;font-size: 18px;font-weight: 500;color: var(--light-text-color);}.home-page .faq-wrapper .faq-content ul li .head-content i {color: var(--light-text-color);font-size: 14px;}.home-page .faq-wrapper .faq-content ul li p {display: none;color: var(--light-text-color);font-size: 14px;line-height: 24px;} .home-page .solution-wrapper {padding: 100px 8%;} .home-page .solution-wrapper .solution-content {display: flex;flex-direction: column;align-items: center;width: 100%;max-width: 1240px;margin: 0px auto;padding: 40px 40px;border-radius: 15px;background: linear-gradient(45deg, rgb(21, 160, 21) 0%, rgba(163,206,224,1) 100%);}.home-page .solution-wrapper .solution-content h2 {font-size: 25px;font-weight: 700;color: #F8F9FA;text-align: center;margin-bottom: 30px;max-width: 640px;}.home-page .solution-wrapper .solution-content h6 {font-size: 20px;font-weight: 400;color: #F8F9FA;margin-bottom: 40px;text-align: center;max-width: 640px;}.home-page .solution-wrapper .solution-content a {display: flex;justify-content: center;align-items: center;gap: 10px;height: 55px;width: fit-content;border-radius: 8px;background-color: #121E2A;color: #F8F9FA;font-size: 16px;max-width: 640px;padding: 0px 40px;} @media screen and (min-width: 720px) {.home-page .hero-wrapper .hero-content .text-content h2 {font-size: 40px;}.home-page .hero-wrapper .hero-content .text-content p {font-size: 20px;line-height: 28px;}}@media screen and (min-width: 880px) {.home-page .hero-wrapper .hero-content .text-content h2 {font-size: 50px;}.home-page .hero-wrapper .hero-content .text-content .actions a {height: 60px;padding: 0px 30px;font-size: 17px;}}@media screen and (min-width: 1080px) {.home-page .hero-wrapper .hero-content .text-content h2 {font-size: 100px;}}@media screen and (min-width: 480px) {.home-page .features-wrapper .features-content ul {flex-direction: row;flex-wrap: wrap;}}@media screen and (min-width: 480px) {.home-page .features-wrapper .features-content ul li {width: calc(50% - 20px);}}@media screen and (min-width: 880px) {.home-page .features-wrapper .features-content ul li {width: calc(25% - 30px);}}@media screen and (min-width: 880px) {.home-page .offers-wrapper .offers-content {flex-direction: row;}}@media screen and (min-width: 880px) {.home-page .offers-wrapper .offers-content .text-content h3 {font-size: 50px;}.home-page .offers-wrapper .offers-content .text-content p {font-size: 20px;line-height: 30px;}}@media screen and (min-width: 880px) {.home-page .offers-alt-wrapper .offers-alt-content {flex-direction: row-reverse;}}@media screen and (min-width: 880px) {.home-page .offers-alt-wrapper .offers-alt-content .text-content h3 {font-size: 50px;}.home-page .offers-alt-wrapper .offers-alt-content .text-content p {font-size: 20px;line-height: 30px;}}@media screen and (min-width: 640px) {.home-page .pricing-wrapper .pricing-content ul {flex-direction: row;flex-wrap: wrap;align-items: center;justify-content: center;}}@media screen and (min-width: 640px) {.home-page .pricing-wrapper .pricing-content ul li {width: calc(50% - 20px);}}@media screen and (min-width: 880px) {.home-page .pricing-wrapper .pricing-content ul li {width: calc(33.33% - 26.67px);}}@media screen and (min-width: 880px) {.home-page .faq-wrapper .faq-content ul li .head-content h3 {font-size: 22px;}.home-page .faq-wrapper .faq-content ul li .head-content i {font-size: 20px;}}@media screen and (min-width: 880px) {.home-page .solution-wrapper .solution-content h2 {font-size: 40px;}.home-page .solution-wrapper .solution-content h6 {font-size: 20px;}}</style>
+
+
+  <!--Main Slider Start-->
+  <section class="main-slider main-slider-style1" style="filter: none; opacity: 1;">
+    <div class="swiper-container thm-swiper__slider" style="filter: none; opacity: 1;" data-swiper-options='{"slidesPerView": 1, "loop": true,
+        "effect": "fade",
+        "pagination": {
+        "el": "#main-slider-pagination",
+        "type": "bullets",
+        "clickable": true
+        },
+        "navigation": {
+        "nextEl": "#main-slider__swiper-button-next",
+        "prevEl": "#main-slider__swiper-button-prev"
+        },
+        "autoplay": {
+        "delay": 5000
+        }}'>
+        <div class="swiper-wrapper"style="height:650px;filter: none; opacity: 1;">
+            <div class="slider-buttom-box" style="filter: none; opacity: 1;">
+                
+                <a href="/signin">Login Profile<i class="fas fa-user"></i>
+                </a>
+                <a href="/signup">Create Profile<i class="fas fa-plus-circle"></i>
+                </a>
+            </div>
+
+            <!--Start Single Swiper Slide-->
+            <div class="swiper-slide" style="filter: none; opacity: 1;">
+                <div class="image-layer" style="background-image: url(assets/images/slides/slide-v1-1.jpg);filter: none; opacity: 1;
+                ">
+                </div>
+               
+                <div class="container" style="filter: none; opacity: 1;">
+                    <div class="row" style="filter: none; opacity: 1;">
+                        <div class="col-xl-12" style="filter: none; opacity: 1;">
+                            <div class="main-slider-content" style="filter: none; opacity: 1;">
+                                <div class="main-slider-content__inner" style="filter: none; opacity: 1;box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+                                border-radius: 10px;">
+                                    <div class="big-title">
+                                        <h2>Maximize Your Earnings<br> with a Trusted Platform<br> Designed for Success</h2>
+                                    </div>
+                                    <div class="text">
+                                        <p>
+                                            Empowering you with opportunities to grow your income<br>
+                                            and achieve financial independence.
+                                        </p>
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Swiper Slide-->
+
+            <!--Start Single Swiper Slide-->
+            <div class="swiper-slide" style="filter: none; opacity: 1;">
+                <div class="image-layer" style="background-image: url(assets/images/slides/slide-v1-2.jpg);filter: none; opacity: 1;">
+                </div>
+                <div class="main-slider-style1__shape1" style="filter: none; opacity: 1;">
+                </div>
+                <div class="container" style="filter: none; opacity: 1;">
+                    <div class="row" style="filter: none; opacity: 1;">
+                        <div class="col-xl-12" style="filter: none; opacity: 1;">
+                            <div class="main-slider-content" style="filter: none; opacity: 1;">
+                                <div class="main-slider-content__inner" style="filter: none; opacity: 1;">
+                                    <div class="big-title" style="filter: none; opacity: 1;">
+                                        <h2>Earning Made<br> Simple, Secure &<br> Rewarding</h2>
+                                    </div>
+                                    <div class="text">
+                                        <p>
+                                            Unlock your potential with a platform built to simplify earning<br> 
+                                            while ensuring your peace of mind.
+                                        </p>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Swiper Slide-->
+
+            <!--Start Single Swiper Slide-->
+            <div class="swiper-slide" style="filter: none; opacity: 1;">
+                <div class="image-layer" style="background-image: url(assets/images/slides/slide-v1-3.jpg);filter: none; opacity: 1;">
+                </div>
+                <div class="main-slider-style1__shape1" style="filter: none; opacity: 1;">
+                </div>
+                <div class="container" style="filter: none; opacity: 1;">
+                    <div class="row" style="filter: none; opacity: 1;">
+                        <div class="col-xl-12" style="filter: none; opacity: 1;">
+                            <div class="main-slider-content" style="filter: none; opacity: 1;">
+                                <div class="main-slider-content__inner" style="filter: none; opacity: 1;">
+                                    <div class="big-title" style="filter: none; opacity: 1;">
+                                        <h2>An Innovative<br> Platform to Boost<br> Your Earnings</h2>
+                                    </div>
+                                    <div class="text">
+                                        <p>
+                                            Empowering you with tools and strategies<br> to maximize your income effortlessly.
+                                        </p>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Swiper Slide-->
+
+
+        </div>
+
+        <!-- If we need navigation buttons -->
+        <div class="main-slider__nav">
+            <div class="swiper-button-prev" id="main-slider__swiper-button-next">
+                <i class="fas fa-angle-right"></i>
+
+            </div>
+            <div class="swiper-button-next" id="main-slider__swiper-button-prev">
+                <i class="fas fa-angle-right"></i>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--Main Slider End-->
+<div class="home-page">
+    <!-- Hero Section -->
+    <div class="hero-wrapper">
+        <div class="hero-content">
+            <div class="text-content">
+                <h2  style="box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);border-radius: 10px;">Inspiring Growth, Achieving Success, Building Lasting Connections</h2>
+                <img src="assets/images/resources/growsphere1.jpg" alt="logo" style="border-radius: 8px;padding-bottom: 8px;">
+                <div class="video-wrapper">
+                    <iframe 
+                    id="vp1vBm0S" 
+                    title="About GrowSphere - Empowering Your Growth! One Step at a Time" 
+                    width="100%" 
+                    height="400" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                     src="https://s3.amazonaws.com/embed.animoto.com/play.html?w=swf/production/vp1&e=1733706159&f=vBm0SRPg0yLZCIUJOMQQZA&d=0&m=p&r=360p+720p&volume=100&start_res=720p&i=m&asset_domain=s3-p.animoto.com&animoto_domain=animoto.com&options=autostart/loop"
+                     allowfullscreen>
+                    </iframe>                </div>
+                <p>We empower you to achieve financial independence while fostering ongoing personal and professional growth.</p>
+                <div class="actions">
+                    <a href="/signup">
+                        <span>Take the First Step</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="partner-area features-content">
+        <div class="container">
+            <div class="partner-area__sec-title">
+                <h3 style="font-weight: bold;font-size: 40px;">Platform Features</h3>
+            </div>
+            <div class="brand-content">
+                <div class="owl-carousel owl-theme thm-owl__carousel partner-carousel" data-owl-options='{
+                    "loop": true,
+                    "autoplay": true,
+                    "margin": 25,
+                    "nav": false,
+                    "dots": false,
+                    "smartSpeed": 500,
+                    "autoplayTimeout": 3000,
+                    "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
+                    "responsive": {
+                            "0": {
+                                "items": 1
+                            },
+                            "768": {
+                                "items": 2
+                            },
+                            "992": {
+                                "items": 3
+                            },
+                            "1200": {
+                                "items": 4
+                            }
+                        }
+                    }'>
+    
+                    <!--Start Single Partner Logo Box-->
+                    <div class="single-partner-logo-box" style="min-height: 250px; width: 250px; text-align: center;">
+                        <a href="#"><img src="assets/images/brand/brand-1-1.jpg" style="height: 200px; width: 200px" alt="Social Media Monetization"></a>
+                        <h3 style="font-weight: bold;">Social Media Monetization</h3>
+                        <span>Gain insights and strategies to effectively monetize your social media platforms through affiliate marketing and network opportunities.</span>    
+                    </div>
+                    <!--End Single Partner Logo Box-->
+                    <!--Start Single Partner Logo Box-->
+                    <div class="single-partner-logo-box" style="min-height: 250px; width: 250px; text-align: center;">
+                        <a href="#"><img src="assets/images/brand/brand-1-2.jpg" style="height: 200px; width: 200px" alt="Online Games"></a>
+                        <h3 style="font-weight: bold;">Interactive Online Games</h3>
+                        <span>Enjoy engaging games and unlock exciting prizes as you advance through levels.</span>
+                    </div>
+                    <!--End Single Partner Logo Box-->
+                    <!--Start Single Partner Logo Box-->
+                    <div class="single-partner-logo-box" style="min-height: 250px; width: 250px; text-align: center;">
+                        <a href="#"><img src="assets/images/brand/brand-1-3.jpg" style="height: 200px; width: 200px" alt="Marketplace & Trade"></a>
+                        <h3 style="font-weight: bold;">Marketplace & Trade</h3>
+                        <span>Showcase and sell products to a broad online audience, driving instant engagement and patronage.</span>
+                    </div>
+                    <!--End Single Partner Logo Box-->
+                    <!--Start Single Partner Logo Box-->
+                    <div class="single-partner-logo-box" style="min-height: 250px; width: 250px; text-align: center;">
+                        <a href="#"><img src="assets/images/brand/brand-1-4.jpg" style="height: 200px; width: 200px" alt="Advanced Skills and Training"></a>
+                        <h3 style="font-weight: bold;">Advanced Skills and Training</h3>
+                        <span>Learn in-demand 21st-century skills from experienced professionals to stay ahead in the digital economy.</span>
+                    </div>
+                    <!--End Single Partner Logo Box-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <div class="offers-wrapper">
+        <div class="offers-content">
+            <div class="text-content">
+                <h3>Learn Diverse Skills on Our Platform</h3>
+                <p>Unlock your potential with access to comprehensive learning resources, interactive lessons, and expert guidance. Accelerate your growth and master a variety of valuable skills tailored for success.</p>
+                <div class="actions">
+                    <a href="/signup">
+                        <span>Explore Our Skill Programs</span>
+                    </a>
+                </div>
+            </div>
+    
+            <div class="img-content">
+                <img src="assets/images/resources/offers-img.png" alt="Learning Offers">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Offers Alt Section -->
+    <div class="offers-alt-wrapper">
+        <div class="offers-alt-content">
+            <div class="text-content">
+                <h3>Our Product-Based System</h3>
+                <p>Maximize the value of your time on our platform through our four-tier product-based services:
+                    <br><br>
+                    1. Social Media Monetization: Learn to generate income through affiliate marketing and networking.  
+                    <br>2. Advanced Skill Development: Master essential 21st-century skills with expert guidance.  
+                    <br>3. Trade and Marketplace: Buy, sell, and connect with a wide audience through our online marketplace.
+                </p>
+                <div class="actions">
+                    <a href="/signup">
+                        <span>Explore Our Offers</span>
+                    </a>
+                </div>
+            </div>
+    
+            <div class="img-content">
+                <img src="assets/images/resources/offers-alt-img.png" alt="Our Offers">
+            </div>
+        </div>
+    </div>
+    
+
+
+    <!-- Pricing section -->
+    <div class="pricing-wrapper">
+        <div class="pricing-content">
+            <div class="head">
+                <h2>Our Pricing Plans</h2>
+                <h6>Choose a plan tailored to your needs</h6>
+            </div>
+            <ul>
+                <li>
+                    <h3>Silver Plan</h3>
+                    <p>This package includes the following features and more:</p>
+    
+                    <div class="features">
+                        <div class="items">
+                            <div class="circle"></div>
+                            <span>Personalized user account</span>
+                        </div>
+                        <div class="items">
+                            <div class="circle"></div>
+                            <span>Unlimited networking opportunities</span>
+                        </div>
+                        <div class="items">
+                            <div class="circle"></div>
+                            <span>Comprehensive skills and courses access</span>
+                        </div>
+                        <div class="items">
+                            <div class="circle"></div>
+                            <span>Full access to the marketplace</span>
+                        </div>
+                        <div class="items">
+                            <div class="circle"></div>
+                            <span>Engaging gameplay with rewards</span>
+                        </div>
+                        <div class="items">
+                            <div class="circle"></div>
+                            <span>No access to Team Collaboration feature</span>
+                        </div>
+                    </div>
+    
+                    <a href="/signup">
+                        <span>Get Started</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </li>
+                <li>
+                    <h3>Gold Plan</h3>
+                    <p>Unlock the full potential of the platform with these premium features:</p>
+    
+                    <div class="features">
+                        <div class="items">
+                            <div class="circle"></div>
+                            <span>Personalized user account</span>
+                        </div>
+                        <div class="items">
+                            <div class="circle"></div>
+                            <span>Unlimited networking opportunities</span>
+                        </div>
+                        <div class="items">
+                            <div class="circle"></div>
+                            <span>Comprehensive skills and courses access</span>
+                        </div>
+                        <div class="items">
+                            <div class="circle"></div>
+                            <span>Full access to the marketplace</span>
+                        </div>
+                        <div class="items">
+                            <div class="circle"></div>
+                            <span>Engaging gameplay with rewards</span>
+                        </div>
+                        <div class="items">
+                            <div class="circle"></div>
+                            <span>Exclusive Team Collaboration feature</span>
+                        </div>
+                    </div>
+    
+                    <a href="/signup">
+                        <span>Get Started</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    
+
+    <!-- Faq Section -->
+    <div class="faq-wrapper">
+        <div class="faq-content">
+            <div class="head">
+                <h2>FAQs</h2>
+                <h6>Find answers to common questions about our platform</h6>
+            </div>
+    
+            <ul>
+                <li>
+                    <div class="head-content">
+                        <h3>How can I join the platform?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <p>Becoming a user is easy! Simply pay a one-time fee of $9, after which you will need to complete a set of tasks for the required minimum days to qualify for access to our skills classes.</p>
+                </li>
+                <li>
+                    <div class="head-content">
+                        <h3>What are activation codes?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <p>Activation codes are provided upon successful registration. They grant you access to our platform and unlock features such as skills training, networking opportunities, and marketplace services.</p>
+                </li>
+                <li>
+                    <div class="head-content">
+                        <h3>What skills can I learn on this platform?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <p>We offer a variety of in-demand 21st-century skills, including digital marketing, graphic design, coding, and more. Our courses are designed to help you excel in the modern professional landscape.</p>
+                </li>
+                <li>
+                    <div class="head-content">
+                        <h3>Can I monetize my social media accounts?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <p>Yes! Our platform provides guidance on monetizing your social media accounts through affiliate marketing, networking strategies, and other proven methods to help you generate income.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+
+<!-- Solution Section -->
+<div class="solution-wrapper">
+    <div class="solution-content">
+        <h2>Transform Your Online Presence into Meaningful Opportunities</h2>
+        <h6>Your journey to unlocking financial and non-financial success starts here.</h6>
+
+        <a href="/signup">Create an Account</a>
+    </div>
+</div>
+
+</div>
+            </div>
+    </div>
+    <style>
+        footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            background-image: url('assets/images/footer/footer.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 40px;
+            color: #fefefe;
+        }
+        footer .brand {
+            text-align: center;
+        }
+        footer .brand h3 {
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        footer .social {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        footer .social a {
+            font-size: 24px;
+            color: #fff;
+            transition: transform 0.3s, color 0.3s;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+        }
+        footer .social a:hover {
+            transform: scale(1.2);
+            color: #73ff00;
+            background-color: #555;
+        }
+        footer .links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        footer .links h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        footer .links a {
+            text-decoration: none;
+            color: #fefefe;
+            font-size: 14px;
+        }
+        footer .links a:hover {
+            color: #7bff00;
+        }
+        footer .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        footer .form input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+        footer .form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffd700;
+            color: #333;
+            cursor: pointer;
+        }
+        footer .form button:hover {
+            background-color: #48ff00;
+        }
+        </style>
+        
+        <footer>
+            <div class="brand">
+                <h3>GrowSphere</h3>
+                <img src="assets/images/resources/growsphere.jpg" alt="" style="border-radius: 4px;">
+            </div>
+            <div class="social">
+                <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com"><i class="fab fa-linkedin"></i></a>
+                <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
+                <a href="https://chat.whatsapp.com/EqPaCBNtoE8JL7ii52EUAe"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+                <a href="https://pinterest.com"><i class="fab fa-pinterest"></i></a>
+                <a href="https://tiktok.com"><i class="fab fa-tiktok"></i></a>
+                <a href="https://t.me/growspherecommunity"><i class="fab fa-telegram"></i></a>
+            </div>
+            <div class="links">
+                <h4>Quick Links</h4>
+                <a href="/">Home</a>
+                    <a href="/about-us">Services</a>
+                    <a href="https://chat.whatsapp.com/EqPaCBNtoE8JL7ii52EUAe">Contact</a>
+                    <a href="#">Privacy Policy</a>
+            </div>
+            <div class="form">
+                <h4>Subscribe to Our Newsletter</h4>
+                <input type="email" placeholder="Enter your email">
+                <button>Subscribe</button>
+            </div>
+        </footer>
+    <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/bxslider/jquery.bxslider.min.js"></script>
+    <script src="assets/vendors/circleType/jquery.circleType.js"></script>
+    <script src="assets/vendors/circleType/jquery.lettering.min.js"></script>
+    <script src="assets/vendors/isotope/isotope.js"></script>
+    <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/vendors/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="assets/vendors/nice-select/jquery.nice-select.min.js"></script>
+    <script src="assets/vendors/odometer/odometer.min.js"></script>
+    <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendors/swiper/swiper.min.js"></script>
+    <script src="assets/vendors/vegas/vegas.min.js"></script>
+    <script src="assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="assets/vendors/wow/wow.js"></script>
+    <script src="assets/vendors/extra-scripts/jquery.paroller.min.js"></script>
+    <script src="assets/vendors/language-switcher/jquery.polyglot.language.switcher.js"></script>
+    <script src="assets/js/custom.js"></script>
+	   
+</body>
+</html>

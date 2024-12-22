@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLHDBQE7F4"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+   
+          gtag('config', 'G-VLHDBQE7F4');
+        </script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Join Us and Grow Your Wealth-GrowSphere</title>
+<!-- Favicons Icons -->
+<link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/growsphere-1.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/growsphere-2.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/growsphere-3.png" />
+<meta name="description" content="Maximize Your Earnings with a Trusted Platform Designed for Success" />	
+   <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+   <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
+   <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+   <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
+   <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+   <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+   <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
+   <link rel="stylesheet" href="assets/vendors/nice-select/nice-select.css" />
+   <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+   <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css" />
+   <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.theme.default.min.css" />
+   <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
+   <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
+   <link rel="stylesheet" href="assets/vendors/thm-icons/style.css">
+   <link rel="stylesheet" href="assets/vendors/language-switcher/polyglot-language-switcher.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <link rel="stylesheet" href="styles.css">
+   <!-- Module css -->
+   <link rel="stylesheet" href="assets/css/module-css/01-header-section.css">
+   <link rel="stylesheet" href="assets/css/module-css/02-banner-section.css">
+   <link rel="stylesheet" href="assets/css/module-css/03-about-section.css">
+   <link rel="stylesheet" href="assets/css/module-css/04-fact-counter-section.css">
+   <link rel="stylesheet" href="assets/css/module-css/05-testimonial-section.css">
+   <link rel="stylesheet" href="assets/css/module-css/06-partner-section.css">
+   <link rel="stylesheet" href="assets/css/module-css/07-footer-section.css">
+   <link rel="stylesheet" href="assets/css/module-css/08-blog-section.css">
+
+   <!-- Template styles -->
+   <link rel="stylesheet" href="assets/css/style.css" />
+   <link rel="stylesheet" href="assets/css/responsive.css" />
+
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet" />
+		<script src="https://checkout.flutterwave.com/v3.js"></script>
+        <script>
+            const useFetch = async ({customeUrl = "", path, method, data, headers = null, contentType = "application/json", responseType = "application/json",}) => {
+                try {
+                    const payload = {
+                        method: method,
+                        redirect: 'manual',
+                        headers: headers ? headers : {
+                            'Accept': 'application/json',
+                        },
+                        body: contentType == "application/json" ? JSON.stringify(data) : data,
+                    }
+        
+                    if (contentType == "application/json") {
+                        payload.headers['Content-Type'] = "application/json"
+                    }
+        
+                    const response = await fetch(customeUrl ? customeUrl : `growsphere.ip-ddns.com${path}`, payload)
+        
+                    if (response.status == 401) {
+                        window.location.replace("https://growsphere.ip-ddns.com/signin");
+                        return;
+                    }
+        
+                    const res = await response.json();
+                    res.status_code = response.status
+                    return res;
+                } catch (err) {
+                    throw err
+                }
+            }
+        
+            const loadSystemTheme = () => {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.body.classList.add("dark-theme")
+                    if (document.body.classList.contains("light-theme")) {
+                        document.body.classList.remove("light-theme")
+                    }
+                } else {
+                    document.body.classList.add("light-theme")
+                    if (document.body.classList.contains("dark-theme")) {
+                        document.body.classList.remove("dark-theme")
+                    }
+                }
+        
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+                    const newColorScheme = event.matches ? "dark" : "light";
+        
+                    if (newColorScheme == "light") {
+                        document.body.classList.add("light-theme")
+        
+                        if (document.body.classList.contains("dark-theme")) {
+                            document.body.classList.remove("dark-theme")
+                        }
+                    }
+        
+                    if (newColorScheme == "dark") {
+                        document.body.classList.add("dark-theme")
+        
+                        if (document.body.classList.contains("light-theme")) {
+                            document.body.classList.remove("light-theme")
+                        }
+                    }
+                });
+            }
+        
+            document.addEventListener("DOMContentLoaded", function(event) {
+                const theme_mode = localStorage.getItem('theme_mode')
+                if (theme_mode == "light") {
+                    document.body.classList.add("light-theme")
+                }
+        
+                if (theme_mode == "dark") {
+                    document.body.classList.add("dark-theme")
+                }
+        
+                if (theme_mode == "system") {
+                    loadSystemTheme()
+                }
+            });
+        
+            class MessageClass {
+                success (message, cb = () => {} ) {
+                    let wrapper
+                    let content
+                    if (document.querySelector('.lofty-message-wrapper')) {
+                        wrapper = document.querySelector('.lofty-message-wrapper')
+                        content = '<div class="lofty-message-box lofty-message-success"><i class="fa-regular fa-circle-check"></i><h2>Success</h2> <span>'+message+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                        wrapper.innerHTML = content
+                    } else {
+                        const appWrapper = document.getElementById('root')
+                        wrapper = document.createElement("div");
+                        wrapper.classList.add("lofty-message-wrapper")
+                        appWrapper.appendChild(wrapper)
+        
+                        content = '<div class="lofty-message-box lofty-message-success"><i class="fa-regular fa-circle-check"></i><h2>Success</h2> <span>'+message+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                        wrapper.innerHTML = content
+                    }
+        
+                    if (wrapper.classList.contains("lofty-message-wrapper-out")) {
+                        wrapper.classList.remove("lofty-message-wrapper-out")
+                    }
+        
+                    wrapper.style.display = "flex"
+        
+                    const close_btn = document.querySelector(".lofty-close-msg-btn")
+                    close_btn.addEventListener('click', (e) => {
+                        e.preventDefault()
+        
+                        wrapper.classList.add("lofty-message-wrapper-out")
+                        setTimeout(() => {
+                            wrapper.style.display = "none"
+                            cb()
+                        }, 250)
+                    })
+                }
+        
+                error (message, cb = () => {} ) {
+                    let wrapper
+                    let content
+                    let displayMessage = "An error occurred";
+                    displayMessage = message
+        
+                    if (document.querySelector('.lofty-message-wrapper')) {
+                        wrapper = document.querySelector('.lofty-message-wrapper')
+                        content = '<div class="lofty-message-box lofty-message-error"><i class="fa-regular fa-circle-xmark"></i><h2>Error</h2> <span>'+displayMessage+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                        wrapper.innerHTML = content
+                    } else {
+                        const appWrapper = document.getElementById('root')
+                        wrapper = document.createElement("div");
+                        wrapper.classList.add("lofty-message-wrapper")
+                        appWrapper.appendChild(wrapper)
+        
+                        content = '<div class="lofty-message-box lofty-message-error"><i class="fa-regular fa-circle-xmark"></i><h2>Error</h2><span>'+displayMessage+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                        wrapper.innerHTML = content
+                    }
+        
+                    if (wrapper.classList.contains("lofty-message-wrapper-out")) {
+                        wrapper.classList.remove("lofty-message-wrapper-out")
+                    }
+        
+                    wrapper.style.display = "flex"
+        
+                    const close_btn = document.querySelector(".lofty-close-msg-btn")
+                    close_btn.addEventListener('click', (e) => {
+                        e.preventDefault()
+        
+                        wrapper.classList.add("lofty-message-wrapper-out")
+        
+                        setTimeout(() => {
+                            wrapper.style.display = "none"
+                            cb()
+                        }, 250)
+                    })
+                }
+            }
+        
+            const Message = new MessageClass()
+        </script>		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet" />
+        	</head>
+
+	<body id="root">
+	<style>.wrapper {display: flex;flex-direction: column;justify-content: center;align-items: center;width: 100%;min-height: 100vh;padding: 20px 20px;background-color: var(--bg-color);position: relative;} .wrapper::before {content: '';width: 100%;height: 100%;position: absolute;z-index: 1;top: 0px;left: 0px;background-image: url('assets/images/backgrounds/background1.jpg');background-repeat:no-repeat;background-position: center;background-size: cover;} .wrapper .banner-wrapper {display: flex;flex-direction: column;align-items: center;gap: 6px;margin-bottom: 20px;position: relative;z-index: 3;} .wrapper .banner-wrapper img {height: 90px;width: 250px;border-radius: 8px;object-fit: cover;} .wrapper .banner-wrapper span {color: var(--text-color);font-size: 25px;font-weight: 700;}.form-wrapper {display: flex;margin: 0px auto;flex-direction: column;justify-content: center;position: relative;z-index: 3;align-items: center;padding: 20px 20px 20px 20px;background: var(--container-color);width: 100%;max-width: 480px;border-radius: 8px;} .form-wrapper form {width: 100%;} .form-wrapper form .input-sec {display: flex;flex-direction: column;margin-bottom: 20px;width: 100%;max-width: 480px;gap: 8px;}.form-wrapper form .input-sec label {display: block;font-size: 14px;font-weight: 400;color: var(--light-text-color);}.form-wrapper form .input-sec input, .form-wrapper form .input-sec select {width: 100%;height: 45px;padding: 4px 10px;background-color: transparent;color: var(--text-color);border-radius: 4px;border: 0.3px solid var(--light-text-color);} .form-wrapper form .row {display: flex;align-items: flex-end;gap: 10px;width: 100%;max-width: 480px;}.form-wrapper form .row .input-sec {flex: 1;} .form-wrapper form button {display: flex;justify-content: center;align-items: center;width: 100%;border: none;border-radius: 8px;padding: 18px 0px;font-size: 15px;font-weight: 600;color: #fff;max-width: 480px;cursor: pointer;background-color: #0F4674;} .form-wrapper form .terms {display: flex;align-items: center;gap: 10px;max-width: 480px;width: 100%;}.form-wrapper form .terms a {font-size: 14px;font-weight: 400;color: var(--light-text-color);} .form-wrapper .meta {display: flex;gap: 4px;} .form-wrapper .meta span {color: rgb(152, 162, 179);font-size: 13px;font-weight: 400;}.form-wrapper .meta span:last-child {font-weight: 500;color: blue;} .form-wrapper .vendor-link {font-size: 14px;font-weight: 500;color: var(--text-color);margin-top: 20px;text-align: center;} .form-wrapper .vendor-link a {display: inline-block;margin-left: 4px;color: blue;} .step-1 h2 {display: block;color: var(--text-color);font-size: 18px;font-weight: 600;text-align: left;margin-bottom: 5px;} .step-1 .meta {margin-bottom: 20px;} .step-1 .progress {display: flex;align-items: center;margin-bottom: 20px;}.step-1 .progress::before {content: '';width: 10px;height: 10px;border-radius: 50%;background-color: blue;} .step-1 .progress li {height: 2px;flex: 1;background-color: blue;}.step-1 .progress li:last-of-type {background-color: var(--progress-inactive-color);} .step-1 .progress span {width: 10px;height: 10px;border-radius: 50%;background-color: var(--progress-inactive-color);}.step-1 .progress::after {content: '';width: 10px;height: 10px;border-radius: 50%;background-color: var(--progress-inactive-color);} .step-1 .actions {display: flex;} .step-1 .actions button {display: flex;justify-content: center;align-items: center;width: 100%;border: none;border-radius: 8px;padding: 18px 0px;font-size: 15px;font-weight: 600;color: #fff;max-width: 480px;cursor: pointer;background-color: #0F4674;}.step-2 {display: none;} .step-2 h2 {display: block;color: var(--text-color);font-size: 18px;font-weight: 600;text-align: left;margin-bottom: 5px;} .step-2 .meta {margin-bottom: 20px;} .step-2 .progress {display: flex;align-items: center;margin-bottom: 20px;}.step-2 .progress::before {content: '';width: 10px;height: 10px;border-radius: 50%;background-color: blue;} .step-2 .progress li {height: 2px;flex: 1;background-color: blue;} .step-2 .progress span {width: 10px;height: 10px;border-radius: 50%;background-color: blue;}.step-2 .progress::after {content: '';width: 10px;height: 10px;border-radius: 50%;background-color: blue;} .step-2 .terms {margin-bottom: 20px;} .step-2 .actions {display: flex;gap: 20px;} .step-2 .actions button {flex: 1;display: flex;justify-content: center;align-items: center;width: 100%;border: none;border-radius: 8px;padding: 18px 0px;font-size: 15px;font-weight: 600;color: #fff;max-width: 480px;cursor: pointer;background-color: #0F4674;}.step-2 .actions button:first-of-type {background-color: transparent;border: 1px solid #0b70c3;color: #0b70c3;} @media screen and (min-width: 880px) { .form-wrapper form {position: static;flex: 1;}}</style>
+
+    <div class="wrapper">
+        <div class="banner-wrapper">
+            <img src="assets/images/backgrounds/background-11.png" alt="GrowSphere">
+            
+        </div>
+
+    <div class="form-wrapper">
+        <form class="form-container" method="POST" action="/signup">
+            <div class="step-1">
+                <h2>Profile information</h2>
+                <a class="meta" href="/signin">
+                    <span>Already have an account? </span>
+                    <span>sign in</span>
+                </a>
+                <ul class="progress">
+                    <li></li>
+                    <span></span>
+                    <li></li>
+                </ul>
+                <div class="input-sec">
+                    <label for="#">First name</label>
+                    <input name="first_name" type="text" placeholder="Enter first name" />
+                </div>
+                <div class="input-sec">
+                    <label for="#">Last name</label>
+                    <input name="last_name" type="text" placeholder="Enter last name" />
+                </div>
+
+                <div class="input-sec">
+                    <label for="#">Username</label>
+                    <input name="username" type="text" placeholder="Enter your Username" />
+                </div>
+
+                <div class="input-sec">
+                    <label for="#">Email address</label>
+                    <input name="user_email" type="email" placeholder="Enter email address" id="email" />
+                </div>
+
+                <div class="input-sec">
+                    <label for="#">Phone number</label>
+                    <input name="user_phone" type="text" placeholder="Phone number" />
+                </div>
+
+                <div class="actions">
+                    <button>Continue</button>
+                </div>
+                
+                
+            </div>
+            <div class="step-2">
+                <h2>Complete Registration</h2>
+                <a class="meta" href="/signin">
+                    <span>Already have an account? </span>
+                    <span>sign in</span>
+                </a>
+                <ul class="progress">
+                    <li></li>
+                    <span></span>
+                    <li></li>
+                </ul>
+
+                <div class="input-sec">
+                    <label for="countryInput">Country</label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                      <input 
+                        type="text" 
+                        id="countryInput" 
+                        name="country" 
+                        placeholder="Type your country" 
+                      />
+                    </div>
+                  </div>
+                  <style>
+                    .input-sec {
+                      margin-bottom: 20px;
+                    }
+                  
+                    .input-sec label {
+                      display: block;
+                      font-size: 16px;
+                      margin-bottom: 5px;
+                      font-weight: bold;
+                    }
+                  
+                    .input-sec input {
+                      padding: 10px;
+                      font-size: 16px;
+                      border: 1px solid #ccc;
+                      border-radius: 4px;
+                      width: 250px;
+                    }
+                    small {
+                      font-size: 12px;
+                    }
+                  </style>
+                  
+                <div class="input-sec">
+                    <label for="#">Password</label>
+                    <input name="user_password" type="text" placeholder="Password" />
+                </div>
+                <div class="input-sec">
+                    <label for="#">Confirm password</label>
+                    <input name="confirm_password" type="text" placeholder="Confirm password" />
+                </div>
+
+                <div class="input-sec">
+                    <label for="#">Coupon code</label>
+                    <input type="text" name="coupon" placeholder="Coupon code" />
+                </div>
+
+                <div class="input-sec">
+                    <select name="active_package" id="">
+                        <option value="none">Select package</option>
+                        <option value="anchor-lite">Silver</option>
+                        <option value="anchor-pro">Gold</option>
+                    </select>
+                </div>
+
+                
+                <input type="hidden" name="nocsrf" value="c85c1d5f878b951857dd1c80523044312ca4cd5bed4a0efa0aab4b6500f012e8b133bbf7eefcf9848ed071aaf2d629b0f15847a389ce08cd11fa4543d77f1494">
+
+                <div class="terms">
+                    <input name="terms" type="checkbox">
+                    <a href="/terms-of-service" target="__blank">I Agree to The Terms and Conditions </a>
+                </div>
+
+                <div class="actions">
+                    <button class="show-step-1">back</button>
+                    <button class="signup-btn">Sign up</button>
+                </div>
+                
+            </div>
+        </form>
+        <p>
+            Don't have a coupon code? 
+            <a href="" id="getCouponLink" action=""> Get Coupon Code Here</a>
+        </p>
+
+        <div id="payment-options" class="hidden">
+            <span id="close-payment-options"> X </span>
+            <h3>Select a Payment Method</h3>
+              <div>
+                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pny7AAABMlBMVEX/zAAAaI/////9zAD/zQD+99z92Vv+2FwAZ5AAaI3/zwD/ygDZ5OkAYY1CgJz///3/0wDXvS3/AAAAaYo7eHcAZ5QAXIqGlF4AZZV0orD50QA+eJj1CQmSQFj/1wAAY4kAXJD9+deyrj0AZJksdIRkg10oaoIAa4YAVIHv9va7rzbSHCa6szQuaobv0Q0AVYkAVpQAXn2Sr7/C0NpikKwAWX2nwMa20do8eKDF3eOPmkqTmVHmzBzcwSDJuzCankpxjVtZfF5RdGhId3tEcX9sikx8lkuXpUI6e3EybXIya2ZPemRRgWB8kVKnsEXLvh2sqkgSZHHrwha8vjZckqWupE8ASWyQvMoAR3t4nLK6KC7HHSuCoUtgSmg8VGoqdFuYLUasJTBOUWhthW5ah3oAbGR1HcTsAAASJElEQVR4nO1cC1vjNtaO43RWsmPiVNgYp43dGJJAIRAghJBrYYaBMpSQ0qVsu7vft9P9/39hjyTfkjgOA3PxPI/fp+ViYluvzv1ImkwW8M0rU5TErxaSKL36hvLI0C8/vJIzmS89pOcjI8uvfvDJfPMqJ4m5rxailPvbNyEyYiaX+WohinJKJpFIySQVKZmkIiWTVKRkkoqUTFKRkkkqUjJJRUomqUjJJBUpmaQiJZNUpGSSipRMUpGSSSpSMklFSiapSMkkFSmZpCIlk1SkZJKKlExSkZJJKlIySUVKJqlIySzEzL05SYIrEvu66I6cNHvh+a//mGQkUaIERFGU4AtlIGcYIwqV/qeq9JtKf88xmmzw8Am4Q5Yp7bkJ+VJkciI8jm2LpgRg4GW1XDYbvV6/OBjs7OxUXOzsDAa3/V6vYZpllxqQo/uSM6bIJiABZOi8Mg7lcqNf3KkMu6PNn87Ozs9fv369UeXYre4Cqhtw6fz8/GzzzcWwsjPoTxpllYotI8uStPxNn54MCKOs9vqDtzfvLq+qu5aFsWZQaBpCGvwIXzSBA2MBGYZlwWVNsaxq9efr0UWl2GuUy+rnJ5MDywUTkUHhc3IOzAGEUbl4d9dUdMdxDDp8JAiEwKjZ0D0gDk2j1zT6GfgfU5qKoShW9ezml1vKCBRVpipH7e/J0/sCMmCxVDEyotkYjC8u6/t7tqMJLwMx9gF3o+FOTzRBZUHtmC19WjLUp4I8RFCr4WZTVxyDIEcj5GVcNEOo1Qhop17XV0fjQc80zacL5vmSkVRzUqx031f39qlRYIQwIQS9VDQYUxUFbdQMx7ZWbyrFvqg+lc/zyEBg6G8PR6uKrQAHas3URsDgNbx8vHGAp4CdweMwRuAwHFu/+6tbKU5U5uOowsUF1Q8iAw+T4D+10d/uvr9rcQtBdCYxErhxv1QwAswNCh4E8+PYzbO18QD4ZGhQjh/fB5EBSyn3xzdnVXC0Lx340+HotfPNYdFUMzlT/FhkMhm1vL12toEtkMdLreNDQDRDIWejcQNczkciI5V7v1xXMciEG8pnAyKChpGi7J53+2X1ZWQkU4S4mFN7Fz9b3Nd8DPP4IDb8ZUhBu5sDE4yHHo17pmTkjJmTejdE/7wUInCHbP361zJMb1RG+hQy4ETE29GezX3Wl4QDSgFJwmVlAso2n8M9Sc3k3p9NGwIzhBLhi/KpaY4F1ursX/5qRmhQDJkcj1CS1B/f7UOqgWmUF6adGJ7+JdLDsVQTIRLr/gjY4VKXAtNJCJ1RbOyPbqntiO5Al5IBMUKgkiaV65YRKY9ZAyLIcBURh/6E2SQgrWZ4KfMcqPLQgbrptRuDgR0OfCb9lK/mSKg5d90+q+rkQN9iyMCnIC8urlWVyKBCB6EpU4BchLMiUKQElxF4IaLpxFgImGoQTegW/hgoD5B/yQibLLwJWdcVk5aDgSOIsxlg3aicKdqCCIkFsjKNE09TrJOZv0BacrUah8ta+Gkli0tas3ZDDw8UFRMH/mpXT3tSuDJdQIYzAndcVbRFJo+NlXZ+CvcGq7kEzZq+nj8uKdeDYhxuN9Bj+PP0pQQEeuBfe9SD+gLUjErNIO92whn1QsmIsik13mnKAib0gcr9VnYK67pAcwPBXs9mC+E/HNbsodu4iEamXNfa7ofhzvwRFQ2o1cmheyWbv1dChsj1GeqE6q9qhuYEjNMCMqIEhV7/ShPiPIyyPj1kTgbMvZ4vZAvenwqFwtaBtbcTV9rL0mC/5N0E37YeFUZGOdriZAqFDle9WRDrbZlSkWMlI5dvf6aKuZgLwsfzZCAn1EBioeswwPyRftWP4ZLJlC/2772HwdCzD2zkSD/wH9O2EJmfWWTU9oZlWZTiyMim2d/QtFqMYLBR6kxrGZeMJrTygVyYjnRKzuZEimmISeqdc+CrJtzcLvEC6dh7xNaBjiJmFty50LxoyLwvGkGG9RbV4qqDanZcoFNKW4V5Mgg1qSkFbAp0Vu1TUZVZBM7lvAZFUDOK0qRF2v5NVJYrMHBknXR8MmAyeH40SAHDsd6arnHMkQFrhC/9awsJsRYjKEfZCDJwvT19FWa13tzmPUuWUoiMiRz6JyFUMJkpZwJjB29uHbnTBexOFiu8Ua2wbm8EmYysipnGjRUd9UOTIjxEkUH6UX7m8taRfdVXZYkrlJfthjtI6o2+MvMoBezVCjxMu754JMS+LKpSNBnawx4TY1mqhKxZk+FklOPCDJl8yR71GqLJ0JB4+iGaOdX00Lh2HqfvOYZkzhKO/fl4iCGDNeV9bwGZnCgXz0AuS8nMRBlORlnJz17u6Mr5zZqL4YSXVVBX9LrexRtiH8/cc6IQ68R/1NaRHiMZbOAxLacjHICcM4e6sDTXt46YE50mA5N0kJ2RDMwq8lI1yHYnbnYhZQZ+MmY5zemZKWytKJaxkvVNJnY0GBlnfTXaZiBaPqHAVx6iyKDSrPlTYw7d9Rs4AuoAJFkd+iMkzsb0PYXsOjANTKZTjx8RUsagxlFxRqrs15aTqef9V3nfgYzyOCuYbD6c7ZJt2hBnMbv8U5A46g+zZI7BmR36T35YQkZA1xPqHeckkzGv7eU9Y2RlZ51Zdt3mNjt1vdDeC3TW+Ksoidydqb1zjwwS6rMeEBTLqOa9eQGlW0IGtwYZumwwQ0bMFS1lmVumaVMw6Lb747puHbGACYNgro4OpnC8h3m402qasjbxFjHV7apfa6G/z0wM/FZS7n0hb9WFJdPr2KcmOP85yajbe8tkqhGt/hC8+NEn4+UfhcOOp3/UEbF+OtaI0fwNsnGXTDcoLoyNWTKF7NFe4Eo6e3gJGWRsirkINVPf2ss8GWQW9SDKbJV8NeNxHMZwH/y15rZBiGCgjW3Vk0zjveHNGfZmhkmywH94+D3w8WAyy+ZXWDWjyJRvnGVcBGKQYBo7ikeGTiYTSPveH12nLljMBRDNsM6KXiUg9c+DsPy7NzOF7JYno049eMNKZPo/jVovwjXL5ZGzzDNjYt/7U5l90DwyLS9alIKpPqi7fRdIKqxRA5Jn5prBZHxnhvQt38uv+xK9956f3dpbGvawcdeLcACQKDnxbSEapeoPBZ/Myok7kvV790rHVxFQOM+b0P5LV/VSZbVruYs5kAGtuGRAMK1A4Px+9ji0rP9InLtJlAOQTveXkRG0kC/dapVcMvde6DlSPCqFbMu/CQnVba/tLU02LbeBjATdi7+gn7/PJUkQQOtoWawAyZiQj8+TGdtL+7BaNXhnp+6RabvfO0Zg/53fAzLkrO+bTPEca7wAA/vv+GTWW35xGQTfFWVZoggO8TqKjCQVW4vbGHwasO71MqhR6FVOorDlOqL7/Qd/KA++n4fYNDL92rJyZ7gUsWUFSlmyVrwHe6UajTJ4acfevjAz8zaTk83VZe4MuybDJrSkeJLJcs/aKYW800YwMdgaqm6JqZpDhesyCMZtW1DkT7BnNC4Z+Nau47nu6RRoGalU1AgyIJtTOz43Q8Lf/UyjkNeRF2fc8T/qzYBdOKl6PWBkQBtyk5FNuGgIrh/4ZNoCzchmcLBEUWjn1riamFHpjJorNpcIlbofTzRtxZoiA4LZu/dSnUIo3cXaucnrsoyZKa4qBrdqjOtBov1oCMbBdDZeyO4ujeEI2V3TjCoBVDptS8ise7EN5ICmyRQOrPqxSwbieFBUEWPEfZkpm3KFdvM5T4z9UF840onD6qRQdye/NGKCc78qqqysnO8BqINq/GT4o2UmO00mX1LqHb+ft2EEkhHGKt2mkgN9EE9tkAvv9VueyUANVjKIsTvVQsxmD5cKBsqZmwmrm+fUTJYks6vEWpzV8Weuc4KnyRwoSnPLG85W1fAjBKreqhyS2tv0ewyodbDlNjKhiKGLH4fTJdHBMjKYOKsDuu1uXs2g3BCl/tnihjlwWcn7av2gTZPJrzT1e59Mpxns2SDVyk5lm2FnfOU/HbW8Th94eYvqzEzhfbSUjLHLWgCRZTN1ONsbMQkamEzBM4pHS5gic2yRoDqA0QVPqTkbHFdXGxvBAK1SqNNHzQMdTTUX89FN5hA066KxoAnIlzSk8e5CMlin3SQ3Th5Nk8mvKLQ68HztvUH8oZBWS2dQmuGlOOXIt/9D3pQ9yRdComkvjf7G5kTNxJGBYMN853ySpkE0Psx6DqBzYoW8WSF72BKMWtAhogbN+GuY6P/48Y8fKf748fvQhiHl0RfEMXMJ1kk77AAO4pYiaDFiXN5K0qJec4b3Gxp/tiI3kGnYCLXGjsHHh8jQYl0Plm3aJTfOQ8KM69996+H7UBVsBZ2+A52SwUrQ+2chOKZkRjXi/PeW90gWrwJIklx+a0M9NXe7RvTHIMt8hPeHyLTrCFIdd1EFTIbw1j0yCNH+6XP57l+a7yxRye/B5HlPCutHocwZpmchFYDh/LuRkWU1zmYytLhVd+6iOhsktGpCTSYgU8iuQLXf4qtdVFMem9xikFIzyP/5ZH5UNN9XWvczJkPzi1BTtH1ixRRmmjIqm6LpLpdEk6FUpIxYHlyydW0hXE5A0hekH4cnNOv1JdNuUWp5lxl4AzB/rvDEqf3x7Xcc3/5/2P4ffVs/5tkCJAahRuIBjTwRNDDdOaBVT8tsjV9UY5YBXaLS7ajKVptJICKilIJ1WdAjsIqS9yvU6ti6b0+vswpMN53a9z7+gwyvQYEsf122s95iH8eaHlqrfbQiiiveu0LKmbuWkVm0PhNaOjdlqTFctcANGIGvh1EEa9y7loaIpnm/MvWpBSvgQSpT0wzi7WHQIFMOBljyP4648iFDCa2iR1YymHZ6cHWtSAUSnv2YvTMm3VU8GDUNpIS3JgsotF8BRkYE/1eYVjoYCl2x/GFomkWQv0FDUIyQl7QUfwMEfwnd2GgEb9AiTAZpNc26HE/U6a0+cdtNJLalmO43sQ2v98C+kFDyiGGS3VFjtnmGb89mm69DbzdwsIiHLCHc00M8mNEHIe+H4AUw7vCSufsZ8Ch0t4ko5Z5IxvucJPXGGza1QpgzPsSpKMbehfn/IQJT84mnLoDxovDn0MxH0NQe9dDL2F4aQpDdHA3M+d2nT9wJOLlo2mzbybLFwU8Lg/ZGkW5t/trIRSxeP3EnoCRPui0bvGTcYvqnB3Es7OxdDxoSXUJ8FhmQJ9ytmsMrh9ScLygahLDT3LwtS3JOBjyLDBSGNPmRyuWdM0tT3KMV1II+Fwu+DU1BxtXbHlABvQdX+zzJZHxDk8zB2vmuRf0l2HBUTv2xQTfSaw5hG5tf/1RpqLNn1J5BxlM4SSr3KqNzbIDuQtx66amMp4BtZXSE8/enxYYa3vf3UjJyjh4nE2/Ha2c1BWL659hOi5GtrL7vDnoqO2cXM7oPP6UhsqN9ZnHc/Ys0dUfjcYal9OzE0vPpsbMe/LgThBNuJoZjk8vN3waTssRiuBw7ug8nww0I+PS3h2uXNdtg56wQ39YqhE5YfCgXtjkX3Ar4FY1Wl4ZuK3fvu5Vijx6g8nZCfFQyAehxoP5gvHmF9xzCVBuq0Od7OGQI9DSRQSWkaYqt3/1ET86YUu7JZ5teQAaqUXiPOOkNKjerzbptOJBGOcLUebkPEg3BjoNrxv5+vba6OdzuN0x6clWSnnx08yVkaIONZnp0R0+jOF67vtvfR4rz3FN0YCC6sl//7xvgIZqmyufL3df1icm4+ivSDq8s8VZljx7SvKpBSq+x4EqPLGqeEXm/eDmxZmguFMe2wT4u3/y53SvTjak5ie71j8pYPhGZSFBSZqNXrJzebJ5dVe+q1V1anmj0zKl/4JSeNNWoy9jdrd5dXZ29G53+MpjwA6fPP3H68cm4lPihYMpqsFMZj4fd7sWbN5s+3txcdLvDMT3kXOyZZdZ9zrETrC9778cmQ+s5erRF4kcO+IHtefCTzOwUOjvySTeLmbFn7b8IGTN4ghhsLaXDDR//yHj+lp1WZD9HZMEf/PJPoGZU70H5aeLDj6Lz3tWiT+fccz0vsxeK9J+dSCpSMklFSiapSMkkFSmZpCIlk1SkZJKKlExSkZJJKlIySUVKJqlIySQVKZmkIiWTVKRkkoqUTFKRkkkqUjJJRUomqUjJJBUpmaQiJZNUpGSSipRMUpGSSSpSMknFLJmcJOa+WohSLkTmh1dyJvSvqH5tyMjyqx9CkjFF6UsP6fmQROkVk8z/AFBMLw0dL4tDAAAAAElFTkSuQmCC" alt="MTN" data-url="mtn-payment.html">
+                  <img src="data:image/png;base64,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" alt="TELECEL" data-url="telecel-payment.html">
+                   </div>
+            </div>
+            <style>
+              /* Style for hidden class */
+              .hidden {
+                display: none;
+              }
+          
+              /* Payment Options Modal */
+              /* Payment Options Modal */
+              #payment-options {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                padding: 20px;
+                border-radius: 8px;
+                z-index: 1000;
+                max-height: 80vh; /* Limit height for large screens */
+                overflow-y: auto; /* Allow scrolling if needed */
+              }
+              
+              /* Flex container for logos */
+              #payment-options div {
+                display: flex;
+                flex-wrap: wrap; /* Enable wrapping */
+                gap: 10px; /* Add space between items */
+                justify-content: center; /* Center the items */
+                align-items: center; /* Vertically align the items */
+              }
+              
+              /* Style for individual logos */
+              #payment-options div img {
+                width: 100px; /* Adjust size as needed */
+                height: 100px; /* Keep the aspect ratio */
+                cursor: pointer; /* Indicate clickable elements */
+                border-radius: 8px; /* Optional: rounded corners */
+                border: 1px solid #ddd; /* Optional: border for clarity */
+                padding: 5px; /* Optional: spacing around logos */
+                transition: transform 0.2s ease-in-out; /* Add hover effect */
+              }
+              
+              #payment-options div img:hover {
+                transform: scale(1.1); /* Slight zoom effect on hover */
+              }
+              
+          
+              /* Overlay */
+              .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+              }
+          
+              /* Close button */
+              #close-payment-options {
+                cursor: pointer;
+                color: red;
+                font-size: 16px;
+                font-weight: bold;
+                text-align: right;
+              }
+            </style>
+  <script>
+  document.addEventListener("DOMContentLoaded", (e) => {
+    e.preventDefault(); 
+    // Show payment options
+    document.getElementById("getCouponLink").addEventListener("click", () => {
+      // Show the payment options modal
+      document.getElementById("payment-options").classList.remove("hidden");
+    });
+  
+    // Handle payment option selection
+    document.querySelectorAll("#payment-options img").forEach((logo) => {
+      logo.addEventListener("click", (event) => {
+        const url = event.target.dataset.url; // Get the URL from the data-url attribute
+        if (url) {
+          window.location.href = url;
+        }
+      });
+    });
+  
+    // Close payment options modal
+    document.getElementById("close-payment-options").addEventListener("click", () => {
+      document.getElementById("payment-options").classList.add("hidden");
+    });
+  });
+  </script>
+
+<script>
+    const BASE_URL = "https://growsphereback.onrender.com";
+    const form = document.querySelector('.form-container');
+const submit_btn = document.querySelector('.form-container .signup-btn');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const couponInput = document.querySelector('input[name="coupon"]');
+    const couponCode = couponInput.value.trim();
+
+    // Check if coupon is entered
+    if (!couponCode) {
+        showTemporaryMessage("Please enter a coupon code.","warning");
+        return;
+    }
+
+    try {
+        submit_btn.classList.add("btn-loader");
+
+        // Validate coupon code
+        const couponValidation = await fetch(`${BASE_URL}/validate-coupon`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ coupon: couponCode }),
+        });
+
+        const couponResult = await couponValidation.json();
+
+        if (!couponValidation.ok || !couponResult.success) {
+            throw new Error(couponResult.message || "Invalid coupon code. Please try again.");
+        }
+
+        showTemporaryMessage("Coupon code is valid. You can proceed with signup.","success");
+
+        // Send signup data
+        const formData = new FormData(form);
+        const signupResponse = await fetch(`${BASE_URL}/signup`, {
+            method: 'POST',
+            body: formData,
+        });
+
+        const signupResult = await signupResponse.json();
+
+        if (!signupResponse.ok) {
+            throw new Error(signupResult.message || "Signup failed. Please try again.");
+        }
+
+        showTemporaryMessage("Signup successful!","success");
+        window.location.href = "/signin";
+    } catch (error) {
+        console.error("Error during signup:", error);
+        showTemporaryMessage("An error occurred during signup. Please try again.","warning");
+    } finally {
+        submit_btn.classList.remove("btn-loader");
+    }
+});
+function showTemporaryMessage(message, type) { let messageContainer = document.getElementById("message-container");if (!messageContainer) {messageContainer = document.createElement("div");messageContainer.id = "message-container"; messageContainer.style.position = "fixed"; messageContainer.style.top = "10px"; messageContainer.style.right = "10px"; messageContainer.style.zIndex = "1000";document.body.appendChild(messageContainer);}const messageElement = document.createElement("div");messageElement.textContent = message;messageElement.style.padding = "10px 20px";messageElement.style.margin = "5px";messageElement.style.borderRadius = "5px";messageElement.style.color = "white";messageElement.style.fontWeight = "bold";messageElement.style.opacity = "1";messageElement.style.transition = "opacity 0.5s ease"; if (type === "success") { messageElement.style.backgroundColor = "#4caf50"; } else if (type === "warning") { messageElement.style.backgroundColor = "#f44336";   } messageContainer.appendChild(messageElement);setTimeout(() => { messageElement.style.opacity = "0"; setTimeout(() => {    messageContainer.removeChild(messageElement); }, 500);}, 4000);}
+</script>
+
+<script>
+    const continue_btn = document.querySelector(".step-1 button")
+    const back_btn = document.querySelector(".step-2 .show-step-1")
+    const step1_container = document.querySelector(".step-1")
+    const step2_container = document.querySelector(".step-2")
+
+    continue_btn.addEventListener('click', (e) => {
+        e.preventDefault()
+        step1_container.style.display = "none"
+        step2_container.style.display = "block"
+    })
+
+    back_btn.addEventListener('click', (e) => {
+        e.preventDefault()
+        step1_container.style.display = "block"
+        step2_container.style.display = "none"
+    })
+</script>
+	</body>
+</html>
