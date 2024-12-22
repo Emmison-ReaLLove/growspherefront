@@ -155,11 +155,11 @@
                   
                 <div class="input-sec">
                     <label for="#">Password</label>
-                    <input name="user_password" type="text" placeholder="Password" />
+                    <input name="user_password" type="password" placeholder="Password" />
                 </div>
                 <div class="input-sec">
                     <label for="#">Confirm password</label>
-                    <input name="confirm_password" type="text" placeholder="Confirm password" />
+                    <input name="confirm_password" type="password" placeholder="Confirm password" />
                 </div>
 
                 <div class="input-sec">
@@ -297,6 +297,7 @@
   </script>
 
 <script>
+    document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector('.form-container');
 const submit_btn = document.querySelector('.form-container .signup-btn');
 
@@ -353,7 +354,7 @@ form.addEventListener('submit', async (e) => {
     } finally {
         submit_btn.classList.remove("btn-loader");
     }
-});
+});})
 function showTemporaryMessage(message, type) { let messageContainer = document.getElementById("message-container");if (!messageContainer) {messageContainer = document.createElement("div");messageContainer.id = "message-container"; messageContainer.style.position = "fixed"; messageContainer.style.top = "10px"; messageContainer.style.right = "10px"; messageContainer.style.zIndex = "1000";document.body.appendChild(messageContainer);}const messageElement = document.createElement("div");messageElement.textContent = message;messageElement.style.padding = "10px 20px";messageElement.style.margin = "5px";messageElement.style.borderRadius = "5px";messageElement.style.color = "white";messageElement.style.fontWeight = "bold";messageElement.style.opacity = "1";messageElement.style.transition = "opacity 0.5s ease"; if (type === "success") { messageElement.style.backgroundColor = "#4caf50"; } else if (type === "warning") { messageElement.style.backgroundColor = "#f44336";   } messageContainer.appendChild(messageElement);setTimeout(() => { messageElement.style.opacity = "0"; setTimeout(() => {    messageContainer.removeChild(messageElement); }, 500);}, 4000);}
 </script>
 
