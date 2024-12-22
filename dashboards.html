@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VLHDBQE7F4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VLHDBQE7F4');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grow Sphere-User Dashboard</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/growsphere-1.png" />
+     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/growsphere-2.png" />
+     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/growsphere-3.png" />
+     <meta name="description" content="Maximize Your Earnings with a Trusted Platform Designed for Success" />	
+        <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+        <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
+        <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/vendors/bxslider/jquery.bxslider.css" />
+        <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+        <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+        <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
+        <link rel="stylesheet" href="assets/vendors/nice-select/nice-select.css" />
+        <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+        <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css" />
+        <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.theme.default.min.css" />
+        <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
+        <link rel="stylesheet" href="assets/vendors/vegas/vegas.min.css" />
+        <link rel="stylesheet" href="assets/vendors/thm-icons/style.css">
+        <link rel="stylesheet" href="assets/vendors/language-switcher/polyglot-language-switcher.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    
+        <link rel="stylesheet" href="styles.css">
+        <!-- Module css -->
+        <link rel="stylesheet" href="assets/css/module-css/01-header-section.css">
+        <link rel="stylesheet" href="assets/css/module-css/02-banner-section.css">
+        <link rel="stylesheet" href="assets/css/module-css/03-about-section.css">
+        <link rel="stylesheet" href="assets/css/module-css/04-fact-counter-section.css">
+        <link rel="stylesheet" href="assets/css/module-css/05-testimonial-section.css">
+        <link rel="stylesheet" href="assets/css/module-css/06-partner-section.css">
+        <link rel="stylesheet" href="assets/css/module-css/07-footer-section.css">
+        <link rel="stylesheet" href="assets/css/module-css/08-blog-section.css">
+    
+        <!-- Template styles -->
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="assets/css/responsive.css" />
+        <script>
+          const useFetch = async ({customeUrl = "", path, method, data, headers = null, contentType = "application/json", responseType = "application/json",}) => {
+              try {
+                  const payload = {
+                      method: method,
+                      redirect: 'manual',
+                      headers: headers ? headers : {
+                          'Accept': 'application/json',
+                      },
+                      body: contentType == "application/json" ? JSON.stringify(data) : data,
+                  }
+      
+                  if (contentType == "application/json") {
+                      payload.headers['Content-Type'] = "application/json"
+                  }
+      
+                  const response = await fetch(customeUrl ? customeUrl : `growsphere.ip-ddns.com${path}`, payload)
+      
+                  if (response.status == 401) {
+                      window.location.replace("https://growsphere.ip-ddns.com/signin");
+                      return;
+                  }
+      
+                  const res = await response.json();
+                  res.status_code = response.status
+                  return res;
+              } catch (err) {
+                  throw err
+              }
+          }
+      
+          const loadSystemTheme = () => {
+              if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                  document.body.classList.add("dark-theme")
+                  if (document.body.classList.contains("light-theme")) {
+                      document.body.classList.remove("light-theme")
+                  }
+              } else {
+                  document.body.classList.add("light-theme")
+                  if (document.body.classList.contains("dark-theme")) {
+                      document.body.classList.remove("dark-theme")
+                  }
+              }
+      
+              window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+                  const newColorScheme = event.matches ? "dark" : "light";
+      
+                  if (newColorScheme == "light") {
+                      document.body.classList.add("light-theme")
+      
+                      if (document.body.classList.contains("dark-theme")) {
+                          document.body.classList.remove("dark-theme")
+                      }
+                  }
+      
+                  if (newColorScheme == "dark") {
+                      document.body.classList.add("dark-theme")
+      
+                      if (document.body.classList.contains("light-theme")) {
+                          document.body.classList.remove("light-theme")
+                      }
+                  }
+              });
+          }
+      
+          document.addEventListener("DOMContentLoaded", function(event) {
+              const theme_mode = localStorage.getItem('theme_mode')
+          if (theme_mode == "light") {
+            document.body.classList.add("light-theme")
+          }
+      
+          if (theme_mode == "dark") {
+            document.body.classList.add("dark-theme")
+          }
+      
+              if (theme_mode == "system") {
+            loadSystemTheme()
+          }
+          });
+      
+          class MessageClass {
+              success (message, cb = () => {} ) {
+                  let wrapper
+                  let content
+                  if (document.querySelector('.lofty-message-wrapper')) {
+                      wrapper = document.querySelector('.lofty-message-wrapper')
+                      content = '<div class="lofty-message-box lofty-message-success"><i class="fa-regular fa-circle-check"></i><h2>Success</h2> <span>'+message+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                      wrapper.innerHTML = content
+                  } else {
+                      const appWrapper = document.getElementById('root')
+                      wrapper = document.createElement("div");
+                      wrapper.classList.add("lofty-message-wrapper")
+                      appWrapper.appendChild(wrapper)
+      
+                      content = '<div class="lofty-message-box lofty-message-success"><i class="fa-regular fa-circle-check"></i><h2>Success</h2> <span>'+message+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                      wrapper.innerHTML = content
+                  }
+      
+                  if (wrapper.classList.contains("lofty-message-wrapper-out")) {
+                      wrapper.classList.remove("lofty-message-wrapper-out")
+                  }
+      
+                  wrapper.style.display = "flex"
+      
+                  const close_btn = document.querySelector(".lofty-close-msg-btn")
+                  close_btn.addEventListener('click', (e) => {
+                      e.preventDefault()
+      
+                      wrapper.classList.add("lofty-message-wrapper-out")
+                      setTimeout(() => {
+                          wrapper.style.display = "none"
+                          cb()
+                      }, 250)
+                  })
+              }
+      
+              error (message, cb = () => {} ) {
+                  let wrapper
+                  let content
+                  let displayMessage = "An error occurred";
+                  displayMessage = message
+      
+                  if (document.querySelector('.lofty-message-wrapper')) {
+                      wrapper = document.querySelector('.lofty-message-wrapper')
+                      content = '<div class="lofty-message-box lofty-message-error"><i class="fa-regular fa-circle-xmark"></i><h2>Error</h2> <span>'+displayMessage+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                      wrapper.innerHTML = content
+                  } else {
+                      const appWrapper = document.getElementById('root')
+                      wrapper = document.createElement("div");
+                      wrapper.classList.add("lofty-message-wrapper")
+                      appWrapper.appendChild(wrapper)
+      
+                      content = '<div class="lofty-message-box lofty-message-error"><i class="fa-regular fa-circle-xmark"></i><h2>Error</h2><span>'+displayMessage+'</span><button class="lofty-close-msg-btn">close</button></div>';
+                      wrapper.innerHTML = content
+                  }
+      
+                  if (wrapper.classList.contains("lofty-message-wrapper-out")) {
+                      wrapper.classList.remove("lofty-message-wrapper-out")
+                  }
+      
+                  wrapper.style.display = "flex"
+      
+                  const close_btn = document.querySelector(".lofty-close-msg-btn")
+                  close_btn.addEventListener('click', (e) => {
+                      e.preventDefault()
+      
+                      wrapper.classList.add("lofty-message-wrapper-out")
+      
+                      setTimeout(() => {
+                          wrapper.style.display = "none"
+                          cb()
+                      }, 250)
+                  })
+              }
+          }
+      
+          const Message = new MessageClass()
+      </script>		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet" />
+    
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Menu</h2>
+      <ul>
+        <li style="padding-bottom: 10px;"><a href="/dashboard">Home 🏠</a></li>
+        <li style="padding-bottom: 10px;"><a href="/profile">Profile 👤</a></li>
+        <li style="padding-bottom: 10px;"><a href="/withdraw">Withdrawal 💳</a></li>
+        <li style="padding-bottom: 10px;"><a href="/marketplace">Marketplace 🛒</a></li>
+        <li style="padding-bottom: 10px;"><a href="/activity">Activity 📊</a></li>
+        <li style="padding-bottom: 10px;"><a href="/logout">Logout 🚪</a></li>
+
+      </ul>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="main-content">
+      <button id="toggle-btn"> ☰ </button>
+      <div class= "dashboard-header">
+        <div class="header-content">
+          <div class="title-section" style="padding-left: 30px;">
+            <h1>Dashboard</h1>
+            <h2>Welcome back!, <span class="username">[User Name]</span></h2>
+            <div>Active Now 🟢</div>
+          </div>          
+          <div class="user-actions">
+            <button class="notification-btn" title="Notifications">
+              🔔
+            </button>
+            <button class="profile-btn" title="Profile">
+              👤
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Summary Cards -->
+      <section class="dashboard-cards">
+        <div class="card">
+          <h3>Active Package</h3>
+          <p id="active-package">--</p>
+        </div>
+        <div class="card">
+          <h3>All-Time Earnings</h3>
+          <p id="all-time-earnings">$0</p>
+        </div>        
+      </section>
+
+      <!-- Earnings and Referrals -->
+      <section class="dashboard-stats">
+        <div class="stat">
+          <h4>GSP Cash</h4>
+          <p id="gsp-cash">$0</p>
+        </div>
+        <div class="stat red">
+          <h4>Sale Commission</h4>
+          <p id="sale-commission">$0</p>
+        </div>
+        <div class="stat">
+          <h4>Today's Referrals</h4>
+          <p id="todays-referrals">0</p>
+        </div>
+        <div class="stat">
+          <h4>Total Referrals</h4>
+          <p id="total-referrals">0</p>
+        </div>
+      </section>
+
+      <!-- Referral Link -->
+      <section class="referral">
+        <h4>Referral Link</h4>
+        <div class="referral-container">
+          <input type="text" id="referral-link" readonly value="https://example.com/referral-code">
+          <button id="copy-btn">Copy</button>
+        </div>
+      </section>
+      <section>
+        <div id="message-container" ></div>
+      <div class="chart-container" style="position: relative; width: 70vw;">
+        <canvas id="combinedChart"></canvas>
+      </div>
+      </section>      
+<style>
+  .chart-container {
+  margin: 20px auto;
+  padding: 10px;
+  background:#f9f9f9 ;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+</style>     
+  </div>
+  </div>
+
+  <section class="daily-tasks">
+    <h2>💼 Daily Tasks</h2>
+    <p class="instructions">
+      Complete your daily task by clicking on the box below. Earn rewards every day and grow your GSP Cash!
+    </p>
+    <div class="task-container">
+      <div> 
+       <img src="prize.png" >
+     </div>
+      <div class="task" id="choose" data-index="1">
+        <div class="inner">
+          <div class="front" style="background-color: inherit;">
+            <p>Click Me</p>
+          </div>
+          <div class="back"></div>
+        </div>
+      </div>
+      <div> 
+        <img src="award.png" >
+      </div>
+    </div>
+    <button id="claim-btn" disabled>Claim Reward</button>
+    <p id="task-message"></p>
+  </section>
+  <!-- Advertisement Section -->
+  <section class="partner-area features-content">
+    <div class="container">
+        <div class="partner-area__sec-title">
+            <h3 style="font-weight: bold;font-size: 40px;">Platform Features</h3>
+        </div>
+        <div class="brand-content">
+            <div class="owl-carousel owl-theme thm-owl__carousel partner-carousel" data-owl-options='{
+                "loop": true,
+                "autoplay": true,
+                "margin": 25,
+                "nav": false,
+                "dots": false,
+                "smartSpeed": 500,
+                "autoplayTimeout": 3000,
+                "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
+                "responsive": {
+                        "0": {
+                            "items": 1
+                        },
+                        "768": {
+                            "items": 2
+                        },
+                        "992": {
+                            "items": 3
+                        },
+                        "1200": {
+                            "items": 4
+                        }
+                    }
+                }'>
+
+                <!--Start Single Partner Logo Box-->
+                <div class="single-partner-logo-box" style="min-height: 250px; width: 250px; text-align: center;">
+                    <a href="#"><img src="assets/images/brand/brand-1-1.jpg" style="height: 200px; width: 200px" alt="Social Media Monetization"></a>
+                    <h3 style="font-weight: bold;">Social Media Monetization</h3>
+                    <span>Gain insights and strategies to effectively monetize your social media platforms through affiliate marketing and network opportunities.</span>    
+                </div>
+                <!--End Single Partner Logo Box-->
+                <!--Start Single Partner Logo Box-->
+                <div class="single-partner-logo-box" style="min-height: 250px; width: 250px; text-align: center;">
+                    <a href="#"><img src="assets/images/brand/brand-1-2.jpg" style="height: 200px; width: 200px" alt="Online Games"></a>
+                    <h3 style="font-weight: bold;">Interactive Online Games</h3>
+                    <span>Enjoy engaging games and unlock exciting prizes as you advance through levels.</span>
+                </div>
+                <!--End Single Partner Logo Box-->
+                <!--Start Single Partner Logo Box-->
+                <div class="single-partner-logo-box" style="min-height: 250px; width: 250px; text-align: center;">
+                    <a href="#"><img src="assets/images/brand/brand-1-3.jpg" style="height: 200px; width: 200px" alt="Marketplace & Trade"></a>
+                    <h3 style="font-weight: bold;">Marketplace & Trade</h3>
+                    <span>Showcase and sell products to a broad online audience, driving instant engagement and patronage.</span>
+                </div>
+                <!--End Single Partner Logo Box-->
+                <!--Start Single Partner Logo Box-->
+                <div class="single-partner-logo-box" style="min-height: 250px; width: 250px; text-align: center;">
+                    <a href="#"><img src="assets/images/brand/brand-1-4.jpg" style="height: 200px; width: 200px" alt="Advanced Skills and Training"></a>
+                    <h3 style="font-weight: bold;">Advanced Skills and Training</h3>
+                    <span>Learn in-demand 21st-century skills from experienced professionals to stay ahead in the digital economy.</span>
+                </div>
+                <!--End Single Partner Logo Box-->
+            </div>
+            <div class="notice-area" style="padding-bottom: 25px;">
+              <h3>Marketplace is Open!</h3>
+              <p>
+                Upload your goods now and connect with instant buyers. Don't miss this opportunity to grow your sales!
+              </p>
+              <a href="/marketplace" class="btn-upload">Go to Marketplace</a>
+            </div>
+        </div>
+    </div>
+    
+</section>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('copy-btn').addEventListener('click', () => {
+  const referralLink = document.getElementById('referral-link');
+  referralLink.select();
+  referralLink.setSelectionRange(0, 99999); // For mobile devices
+  navigator.clipboard.writeText(referralLink.value)
+    .then(() => showTemporaryMessage("Referral link copied to clipboard!","success"))
+    .catch((err) => console.error('Failed to copy:', err));
+});});
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButton = document.getElementById("toggle-btn");
+  const sidebar = document.querySelector(".sidebar");
+
+  // Toggle sidebar visibility on button click
+  toggleButton.addEventListener("click", () => {
+    sidebar.classList.toggle("show");
+  });
+});
+
+function showTemporaryMessage(message, type) { let messageContainer = document.getElementById("message-container");if (!messageContainer) {messageContainer = document.createElement("div");messageContainer.id = "message-container"; messageContainer.style.position = "fixed"; messageContainer.style.top = "10px"; messageContainer.style.right = "10px"; messageContainer.style.zIndex = "1000";document.body.appendChild(messageContainer);}const messageElement = document.createElement("div");messageElement.textContent = message;messageElement.style.padding = "10px 20px";messageElement.style.margin = "5px";messageElement.style.borderRadius = "5px";messageElement.style.color = "white";messageElement.style.fontWeight = "bold";messageElement.style.opacity = "1";messageElement.style.transition = "opacity 0.5s ease"; if (type === "success") { messageElement.style.backgroundColor = "#4caf50"; } else if (type === "warning") { messageElement.style.backgroundColor = "#f44336";   } messageContainer.appendChild(messageElement);setTimeout(() => { messageElement.style.opacity = "0"; setTimeout(() => {    messageContainer.removeChild(messageElement); }, 500);}, 4000);}
+
+  </script>
+  <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/bxslider/jquery.bxslider.min.js"></script>
+    <script src="assets/vendors/circleType/jquery.circleType.js"></script>
+    <script src="assets/vendors/circleType/jquery.lettering.min.js"></script>
+    <script src="assets/vendors/isotope/isotope.js"></script>
+    <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/vendors/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
+    <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="assets/vendors/nice-select/jquery.nice-select.min.js"></script>
+    <script src="assets/vendors/odometer/odometer.min.js"></script>
+    <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendors/swiper/swiper.min.js"></script>
+    <script src="assets/vendors/vegas/vegas.min.js"></script>
+    <script src="assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="assets/vendors/wow/wow.js"></script>
+    <script src="assets/vendors/extra-scripts/jquery.paroller.min.js"></script>
+    <script src="assets/vendors/language-switcher/jquery.polyglot.language.switcher.js"></script>
+    <script src="assets/js/custom.js"></script>
+</body>
+</html>
