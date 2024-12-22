@@ -822,20 +822,11 @@
   })(jQuery);
 
 
-  const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
-
-// Periodically check session status
-setInterval(async () => {
-  const response = await fetch(`${BASE_URL}/check-session`);
-  const data = await response.json();
-  if (!data.active) {
-    alert("Your session has expired. Please sign in again.");
-    window.location.href = "/index.html";
-  }
-}, 30000); // Check every 30 seconds
+const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
 
 // Fetch user data on page load
 document.addEventListener("DOMContentLoaded", () => {
+  const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
   fetch(`${BASE_URL}/user-data`)
     .then((response) => response.json())
     .then((data) => {
@@ -850,6 +841,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Fetch all-time earnings
 document.addEventListener("DOMContentLoaded", () => {
+  const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
   const allTimeEarningsElement = document.getElementById("all-time-earnings");
 
   fetch(`${BASE_URL}/all-time-earnings`)
@@ -869,6 +861,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Fetch dashboard data
 document.addEventListener("DOMContentLoaded", async () => {
+  const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
   try {
     const response = await fetch(`${BASE_URL}/dashboard`);
     const data = await response.json();
@@ -903,6 +896,7 @@ fetch(`${BASE_URL}/generate-referral-link`)
     resetLocalStorage(); */
 
 document.addEventListener("DOMContentLoaded", () => {
+  const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
   const choose = document.getElementById("choose");
   const claimBtn = document.getElementById("claim-btn");
   const message = document.getElementById("task-message");
@@ -961,6 +955,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Claim reward
   claimBtn.addEventListener("click", async () => {
+    const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
     try {
       const response = await fetch(`${BASE_URL}/claim-daily-task`, {
         method: "POST",
@@ -995,6 +990,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
   const activityList = document.getElementById("activity-list");
 
   // Display loading message
@@ -1075,6 +1071,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 document.addEventListener("DOMContentLoaded", () => {
+  const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
   fetch(`${BASE_URL}/dashboard-data`)
     .then((response) => {
       if (!response.ok) throw new Error("Failed to fetch dashboard data.");
@@ -1147,6 +1144,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
   const itemsContainer = document.getElementById("items-container");
   const uploadForm = document.getElementById("upload-form");
 
@@ -1184,6 +1182,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add a comment
   async function addComment(itemId) {
+    const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
     const commentInput = document.getElementById(`comment-input-${itemId}`);
     const comment = commentInput.value.trim();
 
@@ -1210,6 +1209,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Fetch comments for an item
   async function fetchComments(itemId) {
+    const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
     try {
       const res = await fetch(`${BASE_URL}/get-comments/${itemId}`);
       if (!res.ok) throw new Error("Failed to fetch comments.");
@@ -1253,36 +1253,9 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchItems();
 });
 
-document.addEventListener("DOMContentLoaded", async () => {
-  try {
-    const response = await fetch(`${BASE_URL}/profile`, {
-      method: "GET",
-      credentials: "include", // Include session cookie
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch user profile");
-    }
-
-    const user = await response.json();
-
-    // Populate user data
-    document.getElementById("first-name").textContent = user.first_name || "--";
-    document.getElementById("last-name").textContent = user.last_name || "--";
-    document.getElementById("username").textContent = user.username || "--";
-    document.getElementById("email").textContent = user.email || "--";
-    document.getElementById("phone-number").textContent = user.phone_number || "--";
-    document.getElementById("country").textContent = user.country || "--";
-    document.getElementById("active-package").textContent = user.active_package || "--";
-    document.getElementById("coupon-code").textContent = user.coupon_code || "--";
-
-  } catch (error) {
-    console.error("Error loading profile:", error);
-    showTemporaryMessage("Error fetching user profile. Please try again later.","warning");
-  }
-});
 
 document.addEventListener("DOMContentLoaded", () => {
+  const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
   // Fetch balances and update UI
   async function fetchBalances() {
     try {
@@ -1300,6 +1273,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Handle withdrawal
   async function handleWithdrawal(type) {
+    const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
     try {
       const response = await fetch(`${BASE_URL}/withdraw`, {
         method: "POST",
