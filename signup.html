@@ -258,6 +258,18 @@
 
     const BASE_URL = "https://growsphereback.onrender.com";
     const formData = new FormData(form);
+    const userPassword = formData.get("user_password");
+    const confirmPassword = formData.get("confirm_password");
+
+    // Validate that passwords match
+    if (userPassword !== confirmPassword) {
+        showTemporaryMessage("Passwords do not match!", "warning");
+        return;
+    }
+
+    // Remove confirm_password before sending
+    formData.delete("confirm_password");
+	  
     console.log("Form Data Sent:", Object.fromEntries(formData.entries()));
 
     try {
