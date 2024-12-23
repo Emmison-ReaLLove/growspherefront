@@ -248,7 +248,7 @@
   </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
+   document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".form-container");
   const submit_btn = document.querySelector(".form-container .signup-btn");
 
@@ -263,14 +263,15 @@
 
     // Validate that passwords match
     if (userPassword !== confirmPassword) {
-        showTemporaryMessage("Passwords do not match!", "warning");
-        return;
+      showTemporaryMessage("Passwords do not match!", "warning");
+      submit_btn.disabled = false; // Re-enable button
+      return;
     }
 
     // Remove confirm_password before sending
     formData.delete("confirm_password");
-	  
-    console.log("Form Data Sent:", Object.fromEntries(formData.entries()));
+
+    console.log("Form Data Sent:", Object.fromEntries([...formData.entries()].filter(([key]) => !["user_password"].includes(key))));
 
     try {
       // Send signup data
@@ -288,7 +289,10 @@
       window.location.href = "/signin";
     } catch (error) {
       console.error("Error during signup:", error);
-      showTemporaryMessage(error.message || "An error occurred during signup.", "warning");
+      const errorMessage = error.message.includes("Failed to fetch")
+        ? "Network error. Please check your connection and try again."
+        : error.message || "An error occurred during signup.";
+      showTemporaryMessage(errorMessage, "warning");
     } finally {
       submit_btn.disabled = false;
     }
