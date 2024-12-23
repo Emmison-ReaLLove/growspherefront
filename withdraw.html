@@ -74,6 +74,59 @@ button:hover {
 
     <p id="withdraw-message"></p>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
+  // Fetch balances and update UI
+  async function fetchBalances() {
+    try {
+      const response = await fetch(`${BASE_URL}/get-balances`);
+      if (!response.ok) throw new Error("Failed to fetch balances.");
+      
+      const data = await response.json();
+      document.getElementById("sale-commission").textContent = `$${data.sale_commission.toFixed(2)}`;
+      document.getElementById("gsp-cash").textContent = `$${data.gsp_cash.toFixed(2)}`;
+    } catch (error) {
+      console.error("Error fetching balances:", error);
+      document.getElementById("withdraw-message").textContent = "Error fetching balances. Please try again later.";
+    }
+  }
+
+  // Handle withdrawal
+  async function handleWithdrawal(type) {
+    try {
+      const response = await fetch(`${BASE_URL}/withdraw`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type }),
+      });
+
+      const message = await response.text();
+      document.getElementById("withdraw-message").textContent = message;
+
+      // Update UI if withdrawal is successful
+      if (message.toLowerCase().includes("successful")) {
+        if (type === "sale_commission") {
+          document.getElementById("sale-commission").textContent = "$0.00";
+        } else if (type === "gsp_cash") {
+          document.getElementById("gsp-cash").textContent = "$0.00";
+        }
+      }
+    } catch (error) {
+      console.error("Error processing withdrawal:", error);
+      document.getElementById("withdraw-message").textContent = "Error processing withdrawal. Please try again later.";
+    }
+  }
+
+  // Add event listeners for withdrawal buttons
+  document.getElementById("withdraw-sale").addEventListener("click", () => handleWithdrawal("sale_commission"));
+  document.getElementById("withdraw-gsp").addEventListener("click", () => handleWithdrawal("gsp_cash"));
+
+  // Initial fetch for balances
+  fetchBalances();
+});
+
+  </script>
 <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
 <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/vendors/bxslider/jquery.bxslider.min.js"></script>

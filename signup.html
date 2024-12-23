@@ -255,21 +255,25 @@
     e.preventDefault();
     submit_btn.disabled = true;
 
-    const BASE_URL = "https://growsphereback.onrender.com";
     const formData = new FormData(form);
     const userPassword = formData.get("user_password");
     const confirmPassword = formData.get("confirm_password");
 
+    // Check if passwords match
     if (userPassword !== confirmPassword) {
       showTemporaryMessage("Passwords do not match!", "warning");
       submit_btn.disabled = false;
       return;
     }
 
+    // Remove the confirm password from form data before sending
     formData.delete("confirm_password");
+
     console.log("Form Data Sent:", Object.fromEntries(formData.entries()));
+
     try {
-      fetch(${BASE_URL}/signup, {
+      // Fix the fetch request by using backticks for URL and assigning response
+      const response = await fetch(`${BASE_URL}/signup`, {
         method: "POST",
         body: formData,
       });
@@ -286,7 +290,7 @@
       }
 
       showTemporaryMessage("Signup successful!", "success");
-      window.location.href = "/signin";
+      window.location.href = "/signin"; // Redirect to signin after success
     } catch (error) {
       console.error("Error during signup:", error);
       showTemporaryMessage(error.message || "An error occurred during signup.", "warning");

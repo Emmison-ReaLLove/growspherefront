@@ -88,7 +88,7 @@
 
 <script>
 
-   const form = document.querySelector('.form-container');
+const form = document.querySelector('.form-container');
 const submit_btn = document.querySelector('.form-container .signin-btn');
 
 form.addEventListener('submit', async (e) => {
@@ -100,14 +100,15 @@ form.addEventListener('submit', async (e) => {
 
     // Validate input fields
     if (!username || !password) {
-        showTemporaryMessage("Please enter both username and password.","warning"); // Ensure message displays
+        showTemporaryMessage("Please enter both username and password.", "warning"); // Ensure message displays
         return;
     }
 
     try {
         submit_btn.classList.add("btn-loader"); // Show loading spinner
 
-        const response = await fetch(`${BASE_URL}/signin`), {
+        // Corrected fetch request
+        const response = await fetch(`${BASE_URL}/signin`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json", // Use JSON format
@@ -123,14 +124,15 @@ form.addEventListener('submit', async (e) => {
         if (response.ok) {
             window.location.href = "/dashboard"; // Redirect to dashboard
         } else {
-            showTemporaryMessage("Login failed. Please try again.","warning");
+            showTemporaryMessage("Login failed. Please try again.", "warning");
         }
     } catch (error) {
         submit_btn.classList.remove("btn-loader"); // Remove loading spinner
         console.error("Error during sign-in:", error);
-        showTemporaryMessage("An error occurred. Please try again.","warning");
+        showTemporaryMessage("An error occurred. Please try again.", "warning");
     }
 });
+
 function showTemporaryMessage(message, type) { let messageContainer = document.getElementById("message-container");if (!messageContainer) {messageContainer = document.createElement("div");messageContainer.id = "message-container"; messageContainer.style.position = "fixed"; messageContainer.style.top = "10px"; messageContainer.style.right = "10px"; messageContainer.style.zIndex = "1000";document.body.appendChild(messageContainer);}const messageElement = document.createElement("div");messageElement.textContent = message;messageElement.style.padding = "10px 20px";messageElement.style.margin = "5px";messageElement.style.borderRadius = "5px";messageElement.style.color = "white";messageElement.style.fontWeight = "bold";messageElement.style.opacity = "1";messageElement.style.transition = "opacity 0.5s ease"; if (type === "success") { messageElement.style.backgroundColor = "#4caf50"; } else if (type === "warning") { messageElement.style.backgroundColor = "#f44336";   } messageContainer.appendChild(messageElement);setTimeout(() => { messageElement.style.opacity = "0"; setTimeout(() => {    messageContainer.removeChild(messageElement); }, 500);}, 4000);}
 </script>
 <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>

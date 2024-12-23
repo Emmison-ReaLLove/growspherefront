@@ -672,6 +672,116 @@ button:hover {
   document.querySelector(".start-now-btn").addEventListener("click", () => {
   window.location.href = "https://chat.whatsapp.com/EqPaCBNtoE8JL7ii52EUAe";
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const itemsContainer = document.getElementById("items-container");
+  const uploadForm = document.getElementById("upload-form");
+
+  // Fetch and display items
+  async function fetchItems() {
+    try {
+      const res = await fetch(`${BASE_URL}/get-items`);
+      if (!res.ok) throw new Error("Failed to fetch items.");
+      
+      const items = await res.json();
+
+      itemsContainer.innerHTML = items.map((item) => `
+        <div class="item">
+          <img src="${item.item_image || 'default-image.png'}" alt="${item.item_name}" />
+          <h3>${item.item_name}</h3>
+          <p>${item.item_description}</p>
+          <p>Price: $${item.item_price}</p>
+          <p>Uploaded by: ${item.uploader_name}</p>
+          <p>Contact: ${item.uploader_contact}</p>
+          <div class="comments">
+            <h4>Comments</h4>
+            <div id="comments-${item.id}"></div>
+            <textarea id="comment-input-${item.id}" placeholder="Add a comment"></textarea>
+            <button onclick="addComment(${item.id})">Post</button>
+          </div>
+        </div>
+      `).join("");
+
+      items.forEach((item) => fetchComments(item.id));
+    } catch (error) {
+      console.error("Error fetching items:", error);
+      itemsContainer.innerHTML = "<p>Error loading items. Please try again later.</p>";
+    }
+  }
+
+  // Add a comment
+  async function addComment(itemId) {
+    const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
+    const commentInput = document.getElementById(`comment-input-${itemId}`);
+    const comment = commentInput.value.trim();
+
+    if (!comment) {
+      showTemporaryMessage("Comment cannot be empty.","warning");
+      return;
+    }
+
+    try {
+      const res = await fetch(`${BASE_URL}/add-comment`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ item_id: itemId, comment }),
+      });
+
+      if (!res.ok) throw new Error("Failed to add comment.");
+      
+      commentInput.value = "";
+      fetchComments(itemId);
+    } catch (error) {
+      console.error("Error adding comment:", error);
+    }
+  }
+
+  // Fetch comments for an item
+  async function fetchComments(itemId) {
+    const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
+    try {
+      const res = await fetch(`${BASE_URL}/get-comments/${itemId}`);
+      if (!res.ok) throw new Error("Failed to fetch comments.");
+
+      const comments = await res.json();
+
+      const commentsDiv = document.getElementById(`comments-${itemId}`);
+      commentsDiv.innerHTML = comments.map(c => `
+        <div class="comment">
+          <p><strong>${c.commenter_name}:</strong> ${c.comment}</p>
+        </div>
+      `).join("");
+    } catch (error) {
+      console.error(`Error fetching comments for item ${itemId}:`, error);
+    }
+  }
+
+  // Handle item upload
+  uploadForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    try {
+      const formData = new FormData(uploadForm);
+      const res = await fetch(`${BASE_URL}/upload-item`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) throw new Error("Failed to upload item.");
+
+      showTemporaryMessage("Item uploaded successfully!","success");
+      uploadForm.reset();
+      fetchItems();
+    } catch (error) {
+      console.error("Error uploading item:", error);
+      showTemporaryMessage("Error uploading item. Please try again.","warning");
+    }
+  });
+
+  // Initialize
+  fetchItems();
+});
+
 </script>
 </div>
 

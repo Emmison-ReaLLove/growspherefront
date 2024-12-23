@@ -227,6 +227,89 @@
       <li>Loading activities...</li>
     </ul>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const activityList = document.getElementById("activity-list");
+
+  // Display loading message
+  activityList.innerHTML = "<li>Loading activities...</li>";
+
+  // Fetch activities
+  fetch(`${BASE_URL}/activity`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((activities) => {
+      activityList.innerHTML = ""; // Clear the loading message
+
+      if (activities.length === 0) {
+        activityList.innerHTML = "<li>No activities found.</li>";
+        return;
+      }
+
+      activities.forEach((activity) => {
+        const listItem = document.createElement("li");
+        const icon = document.createElement("span");
+        const description = document.createElement("div");
+        const timestamp = document.createElement("div");
+
+        // Add classes
+        icon.classList.add("icon");
+        description.classList.add("description");
+        timestamp.classList.add("timestamp");
+
+        // Determine icon and styling
+        switch (activity.activity_type) {
+          case "Referral":
+            icon.textContent = "👥";
+            icon.style.color = "blue"; // Add color for distinction
+            break;
+          case "Withdrawal":
+            icon.textContent = "💸";
+            icon.style.color = "green";
+            break;
+          case "Task Completion":
+            icon.textContent = "💼";
+            icon.style.color = "orange";
+            break;
+          default:
+            icon.textContent = "🔔";
+            icon.style.color = "gray";
+        }
+
+        // Populate content
+        description.innerHTML = `<strong>${activity.activity_type}:</strong> ${activity.activity_description}`;
+        if (activity.related_username) {
+          description.innerHTML += ` (Referred: <strong>${activity.related_username}</strong>)`;
+        }
+        timestamp.textContent = new Date(activity.created_at).toLocaleString(undefined, {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        });
+
+        // Append to list item
+        listItem.appendChild(icon);
+        listItem.appendChild(description);
+        listItem.appendChild(timestamp);
+
+        // Add to list
+        activityList.appendChild(listItem);
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching activities:", error);
+      activityList.innerHTML = "<li>Error loading activities. Please try again later.</li>";
+    });
+});
+
+  </script>
   <script src="assets/vendors/jquery/jquery-3.6.0.min.js"></script>
   <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendors/bxslider/jquery.bxslider.min.js"></script>
