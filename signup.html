@@ -269,14 +269,10 @@
     formData.delete("confirm_password");
     console.log("Form Data Sent:", Object.fromEntries(formData.entries()));
     try {
-      const response = await fetch(`${BASE_URL}/signup`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",  // Set the correct content type for JSON
-  },
-  body: JSON.stringify(formData),  // Make sure formData is converted to a JSON string
-});
-
+      fetch(${BASE_URL}/signup, {
+        method: "POST",
+        body: formData,
+      });
 
       let result;
       try {
