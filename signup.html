@@ -261,38 +261,35 @@
     const userPassword = formData.get("user_password");
     const confirmPassword = formData.get("confirm_password");
 
-    // Validate that passwords match
     if (userPassword !== confirmPassword) {
       showTemporaryMessage("Passwords do not match!", "warning");
-      submit_btn.disabled = false; // Re-enable button
+      submit_btn.disabled = false;
       return;
     }
 
-    // Remove confirm_password before sending
     formData.delete("confirm_password");
-
-    console.log("Form Data Sent:", Object.fromEntries([...formData.entries()].filter(([key]) => !["user_password"].includes(key))));
-
     try {
-      // Send signup data
-      const signupResponse = await fetch(`${BASE_URL}/signup`, {
+      const response = await fetch(`${BASE_URL}/signup`, {
         method: "POST",
         body: formData,
       });
 
-      const signupResult = await signupResponse.json();
-      if (!signupResponse.ok) {
-        throw new Error(signupResult.message || "Signup failed.");
+      let result;
+      try {
+        result = await response.json(); // Attempt to parse JSON
+      } catch (err) {
+        throw new Error("Server returned an invalid response.");
+      }
+
+      if (!response.ok) {
+        throw new Error(result.message || "Signup failed.");
       }
 
       showTemporaryMessage("Signup successful!", "success");
       window.location.href = "/signin";
     } catch (error) {
       console.error("Error during signup:", error);
-      const errorMessage = error.message.includes("Failed to fetch")
-        ? "Network error. Please check your connection and try again."
-        : error.message || "An error occurred during signup.";
-      showTemporaryMessage(errorMessage, "warning");
+      showTemporaryMessage(error.message || "An error occurred during signup.", "warning");
     } finally {
       submit_btn.disabled = false;
     }
