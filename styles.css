@@ -274,7 +274,7 @@ html {
 	animation: pulse 2s infinite ease-in-out;
 	position: absolute;
   top: 100%;
-  left: 10%;
+  left: 25%;
   transform: translate(-20%, -20%); 
   text-align: center;
   width: 80%
