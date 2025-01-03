@@ -238,80 +238,65 @@
 </section>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById('copy-btn').addEventListener('click', () => {
-  const referralLink = document.getElementById('referral-link');
-  referralLink.select();
-  referralLink.setSelectionRange(0, 99999); // For mobile devices
-  navigator.clipboard.writeText(referralLink.value)
-    .then(() => showTemporaryMessage("Referral link copied to clipboard!","success"))
-    .catch((err) => console.error('Failed to copy:', err));
-});
 
-  const toggleButton = document.getElementById("toggle-btn");
+   // Copy referral link to clipboard
+  document.getElementById('copy-btn').addEventListener('click', () => {
+    const referralLink = document.getElementById('referral-link');
+    referralLink.select();
+    referralLink.setSelectionRange(0, 99999); // For mobile devices
+    navigator.clipboard.writeText(referralLink.value)
+      .then(() => showTemporaryMessage("Referral link copied to clipboard!", "success"))
+      .catch((err) => console.error("Failed to copy:", err));
+  });
+
+ // Toggle sidebar visibility
+ const toggleButton = document.getElementById("toggle-btn");
   const sidebar = document.querySelector(".sidebar");
+  toggleButton.addEventListener("click", () => sidebar.classList.toggle("show"));
 
-  // Toggle sidebar visibility on button click
-  toggleButton.addEventListener("click", () => {
-    sidebar.classList.toggle("show");
-  });
-
-// Periodically check session status
-setInterval(async () => {
-  try {
-    const response = await fetch(`${BASE_URL}/check-session`);
-    if (!response.ok) {
-      console.error("Session check failed:", response.status);
-      return; // Avoid redirecting on server errors
+  // Periodic session status check
+  setInterval(async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/check-session`);
+      if (!response.ok) return;
+      const data = await response.json();
+      if (!data.active) {
+        showTemporaryMessage("Your session has expired. Please sign in again.", "warning");
+        window.location.href = "/index.html";
+      }
+    } catch (error) {
+      console.error("Session check error:", error);
     }
-    const data = await response.json();
-    console.log("Session check response:", data); // Debugging log
-    if (!data.active) {
-      showTemporaryMessage("Your session has expired. Please sign in again.", "warning");
-      window.location.href = "/index.html";
-    }
-  } catch (error) {
-    console.error("Error during session check:", error);
-  }
-}, 86400000);
+  }, 86400000); // Daily check
 
-
-// Fetch all-time earnings
-  const allTimeEarningsElement = document.getElementById("all-time-earnings");
-
+ // Fetch and display all-time earnings
+ const allTimeEarningsElement = document.getElementById("all-time-earnings");
   fetch(`${BASE_URL}/all-time-earnings`)
-    .then((response) => {
-      if (!response.ok) throw new Error("Failed to fetch all-time earnings");
-      return response.json();
-    })
-    .then((data) => {
-      const totalEarnings = parseFloat(data.totalEarnings).toFixed(2);
-      allTimeEarningsElement.textContent = `$${totalEarnings}`;
-    })
-    .catch((error) => {
-      console.error("Error fetching all-time earnings:", error);
-      allTimeEarningsElement.textContent = "$0"; // Fallback
-    });
+    .then(response => response.ok ? response.json() : Promise.reject())
+    .then(data => allTimeEarningsElement.textContent = `$${parseFloat(data.totalEarnings).toFixed(2)}`)
+    .catch(() => allTimeEarningsElement.textContent = "$0");
 
-// Fetch dashboard data
-  try {
-    const response = fetch(`${BASE_URL}/dashboard`);
-    const data = response.json();
-
-    document.getElementById("active-package").textContent = data.activePackage;
-    document.getElementById("gsp-cash").textContent = `$${data.gspCash.toFixed(2)}`;
-    document.getElementById("sale-commission").textContent = `$${data.saleCommission.toFixed(2)}`;
-    document.getElementById("todays-referrals").textContent = data.todaysReferrals;
-    document.getElementById("total-referrals").textContent = data.totalReferrals;
-  } catch (error) {
-    console.error("Error loading dashboard:", error);
+ // Fetch and populate dashboard data
+ async function loadDashboardData() {
+    try {
+      const response = await fetch(`${BASE_URL}/dashboard`);
+      if (!response.ok) throw new Error("Failed to load dashboard data.");
+      const data = await response.json();
+      document.getElementById("active-package").textContent = data.activePackage;
+      document.getElementById("gsp-cash").textContent = `$${data.gspCash.toFixed(2)}`;
+      document.getElementById("sale-commission").textContent = `$${data.saleCommission.toFixed(2)}`;
+      document.getElementById("todays-referrals").textContent = data.todaysReferrals;
+      document.getElementById("total-referrals").textContent = data.totalReferrals;
+    } catch (error) {
+      console.error(error);
+    }
   }
+  loadDashboardData();
 
-// Generate referral link
-fetch(`${BASE_URL}/generate-referral-link`)
-  .then((res) => res.json())
-  .then((data) => {
-    document.getElementById("referral-link").value = data.referralLink;
-  });
+  fetch(`${BASE_URL}/generate-referral-link`)
+    .then(res => res.ok ? res.json() : Promise.reject())
+    .then(data => document.getElementById("referral-link").value = data.referralLink)
+    .catch(console.error);
 
 /* const resetLocalStorage = () => {
       // Clear specific keys or all localStorage
@@ -408,10 +393,10 @@ fetch(`${BASE_URL}/generate-referral-link`)
       // Redirect to social media
       setTimeout(() => {
         window.location.href = "https://chat.whatsapp.com/EqPaCBNtoE8JL7ii52EUAe"; // Update to your desired URL
-      }, 2000);
+      }, 10000);
     } catch (error) {
       console.error("Error claiming reward:", error);
-      message.textContent = "Failed to claim reward. Please try again.";
+      showTemporaryMessage("Failed to claim reward. Please try again.", "warning");
     }
   });
 });
@@ -487,7 +472,6 @@ fetch(`${BASE_URL}/generate-referral-link`)
       console.error("Error loading chart data:", err);
     });
 });
-
 
 function showTemporaryMessage(message, type) { let messageContainer = document.getElementById("message-container");if (!messageContainer) {messageContainer = document.createElement("div");messageContainer.id = "message-container"; messageContainer.style.position = "fixed"; messageContainer.style.top = "10px"; messageContainer.style.right = "10px"; messageContainer.style.zIndex = "1000";document.body.appendChild(messageContainer);}const messageElement = document.createElement("div");messageElement.textContent = message;messageElement.style.padding = "10px 20px";messageElement.style.margin = "5px";messageElement.style.borderRadius = "5px";messageElement.style.color = "white";messageElement.style.fontWeight = "bold";messageElement.style.opacity = "1";messageElement.style.transition = "opacity 0.5s ease"; if (type === "success") { messageElement.style.backgroundColor = "#4caf50"; } else if (type === "warning") { messageElement.style.backgroundColor = "#f44336";   } messageContainer.appendChild(messageElement);setTimeout(() => { messageElement.style.opacity = "0"; setTimeout(() => {    messageContainer.removeChild(messageElement); }, 500);}, 4000);}
 
