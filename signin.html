@@ -112,7 +112,7 @@ form.addEventListener('submit', async (e) => {
         submit_btn.classList.remove("btn-loader"); // Remove loading spinner
 
         if (response.ok) {
-            window.location.href = "/dashboard"; // Redirect to dashboard
+            window.location.href = "/dashboards"; // Redirect to dashboard
         } else {
             showTemporaryMessage("Login failed. Please try again.", "warning");
         }
