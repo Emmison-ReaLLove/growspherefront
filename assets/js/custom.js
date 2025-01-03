@@ -822,5 +822,5 @@
   })(jQuery);
 
 
-const BASE_URL = "https://growsphereback.onrender.com"; // Replace with your actual backend URL
+const BASE_URL = "https://growsphere.click"; // Replace with your actual backend URL
 function showTemporaryMessage(message, type) { let messageContainer = document.getElementById("message-container");if (!messageContainer) {messageContainer = document.createElement("div");messageContainer.id = "message-container"; messageContainer.style.position = "fixed"; messageContainer.style.top = "10px"; messageContainer.style.right = "10px"; messageContainer.style.zIndex = "1000";document.body.appendChild(messageContainer);}const messageElement = document.createElement("div");messageElement.textContent = message;messageElement.style.padding = "10px 20px";messageElement.style.margin = "5px";messageElement.style.borderRadius = "5px";messageElement.style.color = "white";messageElement.style.fontWeight = "bold";messageElement.style.opacity = "1";messageElement.style.transition = "opacity 0.5s ease"; if (type === "success") { messageElement.style.backgroundColor = "#4caf50"; } else if (type === "warning") { messageElement.style.backgroundColor = "#f44336";   } messageContainer.appendChild(messageElement);setTimeout(() => { messageElement.style.opacity = "0"; setTimeout(() => {    messageContainer.removeChild(messageElement); }, 500);}, 4000);}
