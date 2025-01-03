@@ -245,8 +245,8 @@
   navigator.clipboard.writeText(referralLink.value)
     .then(() => showTemporaryMessage("Referral link copied to clipboard!","success"))
     .catch((err) => console.error('Failed to copy:', err));
-});});
-document.addEventListener("DOMContentLoaded", () => {
+});
+
   const toggleButton = document.getElementById("toggle-btn");
   const sidebar = document.querySelector(".sidebar");
 
@@ -254,20 +254,28 @@ document.addEventListener("DOMContentLoaded", () => {
   toggleButton.addEventListener("click", () => {
     sidebar.classList.toggle("show");
   });
-});
 
 // Periodically check session status
 setInterval(async () => {
-  const response = await fetch(`${BASE_URL}/check-session`);
-  const data = await response.json();
-  if (!data.active) {
-    showTemporaryMessage("Your session has expired. Please sign in again.", "warning");
-    window.location.href = "/index.html";
+  try {
+    const response = await fetch(`${BASE_URL}/check-session`);
+    if (!response.ok) {
+      console.error("Session check failed:", response.status);
+      return; // Avoid redirecting on server errors
+    }
+    const data = await response.json();
+    console.log("Session check response:", data); // Debugging log
+    if (!data.active) {
+      showTemporaryMessage("Your session has expired. Please sign in again.", "warning");
+      window.location.href = "/index.html";
+    }
+  } catch (error) {
+    console.error("Error during session check:", error);
   }
-}, 30000); // Check every 30 seconds
+}, 300000);
+
 
 // Fetch all-time earnings
-document.addEventListener("DOMContentLoaded", () => {
   const allTimeEarningsElement = document.getElementById("all-time-earnings");
 
   fetch(`${BASE_URL}/all-time-earnings`)
@@ -283,13 +291,11 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error fetching all-time earnings:", error);
       allTimeEarningsElement.textContent = "$0"; // Fallback
     });
-});
 
 // Fetch dashboard data
-document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const response = await fetch(`${BASE_URL}/dashboard`);
-    const data = await response.json();
+    const response = fetch(`${BASE_URL}/dashboard`);
+    const data = response.json();
 
     document.getElementById("active-package").textContent = data.activePackage;
     document.getElementById("gsp-cash").textContent = `$${data.gspCash.toFixed(2)}`;
@@ -299,7 +305,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (error) {
     console.error("Error loading dashboard:", error);
   }
-});
 
 // Generate referral link
 fetch(`${BASE_URL}/generate-referral-link`)
@@ -320,7 +325,7 @@ fetch(`${BASE_URL}/generate-referral-link`)
     // Call resetLocalStorage here to ensure a fresh start
     resetLocalStorage(); */
 
-document.addEventListener("DOMContentLoaded", () => {
+
   const choose = document.getElementById("choose");
   const claimBtn = document.getElementById("claim-btn");
   const message = document.getElementById("task-message");
@@ -375,7 +380,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Update message
     message.textContent = `You won $${rewardAmount}! Click "Claim Reward" to add to your GSP Cash.`;
-  });
 
   // Claim reward
   claimBtn.addEventListener("click", async () => {
@@ -412,7 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+
   fetch(`${BASE_URL}/dashboard-data`)
     .then((response) => {
       if (!response.ok) throw new Error("Failed to fetch dashboard data.");
