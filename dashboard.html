@@ -270,11 +270,19 @@
   }, 86400000); // Daily check
 
  // Fetch and display all-time earnings
- const allTimeEarningsElement = document.getElementById("all-time-earnings");
-  fetch(`${BASE_URL}/all-time-earnings`)
-    .then(response => response.ok ? response.json() : Promise.reject())
-    .then(data => allTimeEarningsElement.textContent = `$${parseFloat(data.totalEarnings).toFixed(2)}`)
-    .catch(() => allTimeEarningsElement.textContent = "$0");
+ fetch(`${BASE_URL}/all-time-earnings`)
+  .then(response => {
+    if (!response.ok) throw new Error("Failed to fetch all-time earnings");
+    return response.json();
+  })
+  .then(data => {
+    const totalEarnings = parseFloat(data.totalEarnings).toFixed(2);
+    document.getElementById("all-time-earnings").textContent = `$${totalEarnings}`;
+  })
+  .catch(error => {
+    console.error("Error fetching all-time earnings:", error);
+    document.getElementById("all-time-earnings").textContent = "$0"; // Fallback
+  });
 
  // Fetch and populate dashboard data
  async function loadDashboardData() {
@@ -289,14 +297,30 @@
       document.getElementById("total-referrals").textContent = data.totalReferrals;
     } catch (error) {
       console.error(error);
+      showTemporaryMessage("Unable to load dashboard data.","warning");
     }
   }
   loadDashboardData();
 
-  fetch(`${BASE_URL}/generate-referral-link`)
-    .then(res => res.ok ? res.json() : Promise.reject())
-    .then(data => document.getElementById("referral-link").value = data.referralLink)
-    .catch(console.error);
+   // Fetch the referral link
+   fetch(`${BASE_URL}/generate-referral-link`, {
+    method: "POST",
+    credentials: "include",  // Ensure session is sent with the request
+  })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error("Failed to generate referral link.");
+      }
+      return res.json();
+    })
+    .then(data => {
+      document.getElementById("referral-link").value = data.referralLink;  // Update the input field with the referral link
+    })
+    .catch(error => {
+      console.error(error);
+      showTemporaryMessage("Unable to generate referral link.", "warning");
+    });
+
 
 /* const resetLocalStorage = () => {
       // Clear specific keys or all localStorage
